@@ -1,5 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { SearchBarComponent } from '../search-bar/search-bar.component';
+import { NavBarComponent } from '../nav-bar/nav-bar.component';
 import { HeaderComponent } from './header.component';
 
 
@@ -11,7 +11,7 @@ describe('HeaderComponent', () => {
     await TestBed.configureTestingModule({
       declarations: [ 
         HeaderComponent,
-        SearchBarComponent
+        NavBarComponent
       ]
     })
     .compileComponents();
@@ -31,9 +31,9 @@ describe('HeaderComponent', () => {
     expect(compiled.querySelector('.app-name')?.textContent).toEqual('8th Light Highlight');
   });
 
-  it('should render the search bar', () => {
+  it('should render the navigation bar', () => {
     const compiled = fixture.nativeElement as HTMLElement;
 
-    expect(compiled.querySelector('#search-box')).toBeTruthy();
+    expect(compiled.querySelector('.nav-bar')).toBeTruthy();
   })
 });

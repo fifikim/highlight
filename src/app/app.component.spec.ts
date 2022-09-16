@@ -4,9 +4,9 @@ import { AppComponent } from './app.component';
 import { BrowseComponent } from './browse/browse.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { HeaderComponent } from './header/header.component';
+import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { OrgStatComponent } from './org-stat/org-stat.component';
 import { RepoPreviewComponent } from './repo-preview/repo-preview.component';
-import { SearchBarComponent } from './search-bar/search-bar.component';
 
 describe('AppComponent', () => {
   let app: AppComponent;
@@ -20,7 +20,7 @@ describe('AppComponent', () => {
       declarations: [
         AppComponent,
         HeaderComponent,
-        SearchBarComponent,
+        NavBarComponent,
         DashboardComponent,
         BrowseComponent,
         OrgStatComponent,
@@ -42,9 +42,9 @@ describe('AppComponent', () => {
     expect(compiled.querySelector('header')).toBeTruthy();
   });
 
-  it('should render the search bar', () => {
+  it('should render the navigation bar', () => {
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('#search-box')).toBeTruthy();
+    expect(compiled.querySelector('.nav-bar')).toBeTruthy();
   });
 
   it('should render the dashboard', () => {

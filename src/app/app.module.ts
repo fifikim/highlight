@@ -9,8 +9,8 @@ import { HeaderComponent } from './header/header.component';
 import { RepoPreviewComponent } from './repo-preview/repo-preview.component';
 import { BrowseComponent } from './browse/browse.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { SearchBarComponent } from './search-bar/search-bar.component';
 import { OrgStatComponent } from './org-stat/org-stat.component';
+import { NavBarComponent } from './nav-bar/nav-bar.component';
 
 @NgModule({
   declarations: [
@@ -19,8 +19,8 @@ import { OrgStatComponent } from './org-stat/org-stat.component';
     RepoPreviewComponent,
     BrowseComponent,
     DashboardComponent,
-    SearchBarComponent,
-    OrgStatComponent
+    OrgStatComponent,
+    NavBarComponent
   ],
   imports: [
     BrowserModule,
