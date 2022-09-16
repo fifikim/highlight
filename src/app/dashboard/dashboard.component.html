@@ -1,7 +1,7 @@
 <div class="dashboard" fxLayout="column">
   <div fxFlexAlign="center"><h1>Dashboard</h1></div>
 
-  <div fxLayout="row wrap" fxLayoutAlign="space-evenly center" fxLayoutGap="10px">
+  <div fxLayout="row wrap" fxLayoutAlign="space-between center">
     <app-org-stat class="stats" fxFlex="3 0 40"
       *ngFor="let stat of stats; let i = index" [stat]="stat" [repo]="repos[i]">
     </app-org-stat>

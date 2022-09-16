@@ -12,11 +12,11 @@
   border-width: 1px;
   border-radius: 5px;
   min-width: 300px;
-  margin-top: 10px;
+  margin: 10px 5px 0 5px;
 }
 
 .stats:last-child {
-  margin-right: 10px;
+  margin-right: 5px;
 }
 
 .timestamp {
