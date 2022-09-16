@@ -11,6 +11,7 @@ import { Repository } from '../repository';
 export class SearchResultsComponent implements OnInit {
   results?: Repository[];
   query?: string;
+  pluralize: boolean = false;
 
   constructor(private route: ActivatedRoute, private repoService: RepoService){}
 
@@ -20,13 +21,19 @@ export class SearchResultsComponent implements OnInit {
         this.query = params['name'];
         if (this.query) { 
           this.repoService.searchRepos(this.query)
-            .subscribe(repos => this.results = repos)
-
-    // if this.results go to page else go to not found page
+            .subscribe(repos => {
+              this.results = repos;
+              this.pluralize = this.results.length > 1 ? true : false;
+              this.renderResults();
+            })
     }})
   }
 
-
+  renderResults(): void {
+    if (this.results) {
+      
+    }
+  }
 }
 
 // this.results = this.route.queryParams.pipe(

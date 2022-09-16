@@ -8,5 +8,4 @@ import { RepoService } from './repo.service';
 })
 export class AppComponent {
   title = 'highlight';
-
 }
