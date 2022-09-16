@@ -1,35 +1,69 @@
-import { TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
+import { BrowseComponent } from './browse/browse.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { HeaderComponent } from './header/header.component';
+import { OrgStatComponent } from './org-stat/org-stat.component';
+import { RepoPreviewComponent } from './repo-preview/repo-preview.component';
+import { SearchBarComponent } from './search-bar/search-bar.component';
 
 describe('AppComponent', () => {
+  let app: AppComponent;
+  let fixture: ComponentFixture<AppComponent>;
+
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [
         RouterTestingModule
       ],
       declarations: [
-        AppComponent
+        AppComponent,
+        HeaderComponent,
+        SearchBarComponent,
+        DashboardComponent,
+        BrowseComponent,
+        OrgStatComponent,
+        RepoPreviewComponent
       ],
     }).compileComponents();
+
+    fixture = TestBed.createComponent(AppComponent);
+    app = fixture.componentInstance;
+    fixture.detectChanges();
   });
 
   it('should create the app', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'highlight'`, () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app.title).toEqual('highlight');
+  it(`should render the header`, () => {
+    const compiled = fixture.nativeElement as HTMLElement;
+    expect(compiled.querySelector('header')).toBeTruthy();
   });
 
-  it('should render application name', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
+  it('should render the search bar', () => {
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('.app-name')?.textContent).toEqual('8th Light Highlight');
+    expect(compiled.querySelector('#search-box')).toBeTruthy();
+  });
+
+  it('should render the dashboard', () => {
+    const compiled = fixture.nativeElement as HTMLElement;
+    expect(compiled.querySelector('.dashboard')).toBeTruthy();
+  });
+
+  it('should render organization stats in the dashboard', () => {
+    const compiled = fixture.nativeElement as HTMLElement;
+    expect(compiled.querySelector('.stats')).toBeTruthy();
+  });
+
+  it('should render the browse all section', () => {
+    const compiled = fixture.nativeElement as HTMLElement;
+    expect(compiled.querySelector('.browse-all')).toBeTruthy();
+  });
+
+  it('should render repository previews in the browse all section', () => {
+    const compiled = fixture.nativeElement as HTMLElement;
+    expect(compiled.querySelector('.repo-description')).toBeTruthy();
   });
 });
