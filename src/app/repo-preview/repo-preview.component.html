@@ -1,5 +1,5 @@
 <div *ngIf="repo">
-  <a href="/">
+  <a routerLink="/detail/{{repo.name}}">
     <div class="card">
       <h3 class="repo-name">{{repo.name}}</h3>
       <p class="repo-description">Description: {{repo.description || "not available" }}</p>

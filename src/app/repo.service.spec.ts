@@ -24,4 +24,14 @@ describe('RepoService', () => {
         done();
       });
   });
+
+  it('#searchRepos should return a list of repositories whose name matches the search term', 
+  (done) => {
+    const expectedData: Repository[] = [REPOSITORIES[1]];
+
+    service.searchRepos("magistro").subscribe(data => {
+      expect(data).toEqual(expectedData);
+      done();
+    });
+  });
 });

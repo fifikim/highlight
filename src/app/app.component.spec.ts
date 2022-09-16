@@ -4,9 +4,12 @@ import { AppComponent } from './app.component';
 import { BrowseComponent } from './browse/browse.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { HeaderComponent } from './header/header.component';
+import { HomeComponent } from './home/home.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { OrgStatComponent } from './org-stat/org-stat.component';
 import { RepoPreviewComponent } from './repo-preview/repo-preview.component';
+import { SearchBarComponent } from './search-bar/search-bar.component';
+import { SearchResultsComponent } from './search-results/search-results.component';
 
 describe('AppComponent', () => {
   let app: AppComponent;
@@ -24,7 +27,10 @@ describe('AppComponent', () => {
         DashboardComponent,
         BrowseComponent,
         OrgStatComponent,
-        RepoPreviewComponent
+        RepoPreviewComponent,
+        HomeComponent,
+        SearchResultsComponent,
+        SearchBarComponent
       ],
     }).compileComponents();
 

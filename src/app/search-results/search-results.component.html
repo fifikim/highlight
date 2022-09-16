@@ -1,0 +1,10 @@
+<div *ngIf="results" fxLayout="column" fxLayoutAlign="center center">
+  <h3>Your search returned:</h3>
+  <ul>
+    <li *ngFor="let repo of results">
+      <a routerLink="/detail/{{repo.name}}">
+        {{repo.name}}
+      </a>
+    </li>
+  </ul>
+</div>

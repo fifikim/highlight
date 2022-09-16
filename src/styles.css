@@ -32,7 +32,7 @@ button {
   font-family: Arial, Helvetica, sans-serif;
 }
 button:hover {
-  background-color: black;
+  background-color: rgb(101, 104, 122);
   color: white;
 }
 button:disabled {

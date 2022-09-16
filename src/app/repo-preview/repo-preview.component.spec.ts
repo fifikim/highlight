@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { RepoPreviewComponent } from './repo-preview.component';
 import { REPOSITORIES } from '../mock-data';
+import { RouterModule } from '@angular/router';
 
 describe('RepoPreviewComponent', () => {
   let component: RepoPreviewComponent;
@@ -8,7 +9,8 @@ describe('RepoPreviewComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ RepoPreviewComponent ]
+      declarations: [ RepoPreviewComponent ],
+      imports: [ RouterModule ]
     })
     .compileComponents();
 
