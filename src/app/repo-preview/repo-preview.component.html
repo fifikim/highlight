@@ -1,0 +1,9 @@
+<div *ngIf="repo">
+  <a href="/">
+    <div class="card">
+      <h3 class="repo-name">{{repo.name}}</h3>
+      <p class="repo-description">Description: {{repo.description || "not available" }}</p>
+      <p>you'll be able to click me to view the detail page for this repo</p>
+    </div>
+  </a>
+</div>
