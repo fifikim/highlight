@@ -6,24 +6,20 @@ export const REPOSITORIES: Repository[] = [
     description: "Learning whilst seated",
     languages: ["Java", "HTML", "CSS", "Python", "Go", "Jupyter Notebook", "Dockerfile", "JavaScript"],
     collaborators: 138,
-    openPRs: 1,
-    lastCommit: null
+    openPRs: 1
   },
   {
     name: "magistro",
     description: "A path to mastery teaching tool",
     languages: ["JavaScript", "Ruby"],
-    collaborators: null,
-    openPRs: 0,
-    lastCommit: null
+    openPRs: 0
   },
   {
     name: "cob_spec",
     description: "A fitnesse suite for a web server",
     languages: ["CSS", "HTML", "JavaScript", "Java"],
     collaborators: 138,
-    openPRs: 5,
-    lastCommit: null
+    openPRs: 5
   },
   {
     name: "blog",
@@ -41,13 +37,10 @@ export const REPOSITORIES: Repository[] = [
     name: "web-starter-kit",
     description: "Barebones dev server with SASS compiling support",
     languages: ["JavaScript", "SCSS", "HTML"],
-    collaborators: null,
-    openPRs: 0,
-    lastCommit: null
+    openPRs: 0
   },
   {
     name: "learning-trails",
-    description: null,
     languages: [],
     collaborators: 140,
     openPRs: 1,
@@ -62,14 +55,11 @@ export const REPOSITORIES: Repository[] = [
     description: "Pairing session",
     languages: ["Java", "C#", "Python", "Ruby"],
     collaborators: 138,
-    openPRs: 1,
-    lastCommit: null
+    openPRs: 1
   },
   {
     name: "jekyll-s3-upload",
-    description: null,
     languages: ["Ruby"],
-    collaborators: null,
     openPRs: 0,
     lastCommit: {
       message: "Merge pull request #1 from 8thlight/feat/aws-sdk-v3\n\nchore: Update to use AWS Ruby SDK v3",
@@ -81,17 +71,15 @@ export const REPOSITORIES: Repository[] = [
     name: "bootstrap-example",
     description: "Dummy twitter bootstrap example, for a workshop",
     languages: ["HTML"],
-    collaborators: null,
-    openPRs: 0,
-    lastCommit: null
+    openPRs: 0
   }
 ]
 
 export const ORG_STATS: string[] = [
-  "organization-wide stats",
-  "surprising revelations",
-  "neat insights",
-  "refreshing findings",
   "best project",
-  "cornucopia of info"
+  "most commits",
+  "most collaborators",
+  "largest codebase",
+  "weirdest project",
+  "most fun"
 ]

@@ -23,10 +23,24 @@ describe('RepoPreviewComponent', () => {
   });
 
   it('should receive a repo as input and display its name', () => {
-    expect(fixture.nativeElement.querySelector('.repo-name').textContent).toContain('zagaku');
+    const repoName = fixture.nativeElement.querySelector('.repo-name');
+
+    expect(repoName.textContent).toContain('zagaku');
   });
 
   it('should display the description of the repo received as input', () => {
-    expect(fixture.nativeElement.querySelector('.repo-description').textContent).toContain('Learning whilst seated');
+    const repoDescription = fixture.nativeElement.querySelector('.repo-description');
+
+    expect(repoDescription.textContent).toContain('Learning whilst seated');
   });
+
+  it('should display the description as "not available" if it is not given', () => {
+    const repoWithNoDescription = REPOSITORIES[5];
+    component.repo = repoWithNoDescription;
+    fixture.detectChanges();
+
+    const emptyRepoDescription = fixture.nativeElement.querySelector('.repo-description');
+
+    expect(emptyRepoDescription.textContent).toContain('not available');
+  })
 });

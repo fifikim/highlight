@@ -1,10 +1,10 @@
 export interface Repository {
   name: string;
-  description: string | null;
+  description?: string;
   languages: string[];
-  collaborators: number | null;
+  collaborators?: number;
   openPRs: number;
-  lastCommit: Commit | null;
+  lastCommit?: Commit;
 }
 
 export interface Commit {

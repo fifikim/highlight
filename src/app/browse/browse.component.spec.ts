@@ -47,21 +47,26 @@ describe('BrowseComponent', () => {
 
   it('should render the name of the repository in the RepoPreviewComponent', () => {
     const compiled = fixture.debugElement.nativeElement as HTMLElement;
+    const firstRepoPreview = compiled.querySelector('.repo-preview');
+    const firstRepoName = REPOSITORIES[0].name;
 
-    expect(compiled.querySelector('.repo-preview')?.textContent).toContain(REPOSITORIES[0].name);
+    expect(firstRepoPreview?.textContent).toContain(firstRepoName);
   });
 
   it('should render the description of the repository in the RepoPreviewComponent', () => {
     const compiled = fixture.debugElement.nativeElement as HTMLElement;
+    const firstRepoPreview = compiled.querySelector('.repo-preview');
+    const firstRepoDescription = REPOSITORIES[0].description;
 
-    expect(compiled.querySelector('.repo-preview')?.textContent).toContain(REPOSITORIES[0].description);
+    expect(firstRepoPreview?.textContent).toContain(firstRepoDescription);
   });
 
   it('should render a dropdown menu with all available sort options', () => {
     const compiled = fixture.debugElement.nativeElement as HTMLElement;
+    const sortByMenu = compiled.querySelector('select');
     const renderedOptions = compiled.querySelectorAll('option');
 
-    expect(compiled.querySelector('select')).toBeTruthy();
+    expect(sortByMenu).toBeTruthy();
     expect(renderedOptions.length).toBe(4);
   });
 });

@@ -25,10 +25,14 @@ describe('OrgStatComponent', () => {
   });
 
   it('should receive repo as input and display its name', () => {
-    expect(fixture.nativeElement.querySelector('.stat').textContent).toContain('zagaku');
+    const firstOrganizationStat = fixture.nativeElement.querySelector('.stat');
+
+    expect(firstOrganizationStat?.textContent).toContain('zagaku');
   });
 
   it('should receive as input and display stat data', () => {
-    expect(fixture.nativeElement.querySelector('.stat').textContent).toContain('Test Stat');
+    const firstOrganizationStat = fixture.nativeElement.querySelector('.stat');
+
+    expect(firstOrganizationStat?.textContent).toContain('Test Stat');
   });
 });

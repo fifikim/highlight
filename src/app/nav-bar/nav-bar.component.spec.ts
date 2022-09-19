@@ -22,7 +22,9 @@ describe('NavBarComponent', () => {
   });
 
   it('should render a link for each of the paths', () => {
-    expect(fixture.nativeElement.querySelector('.nav-bar').textContent).toContain('Dashboard');
-    expect(fixture.nativeElement.querySelector('.nav-bar').textContent).toContain('Search');
+    const navBar = fixture.nativeElement.querySelector('.nav-bar');
+    
+    expect(navBar.textContent).toContain('Dashboard');
+    expect(navBar.textContent).toContain('Search');
   });
 });

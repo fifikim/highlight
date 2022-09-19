@@ -39,31 +39,43 @@ describe('AppComponent', () => {
 
   it(`should render the header`, () => {
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('header')).toBeTruthy();
+    const header = compiled.querySelector('header');
+
+    expect(header).toBeTruthy();
   });
 
   it('should render the navigation bar', () => {
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('.nav-bar')).toBeTruthy();
+    const navBar = compiled.querySelector('.nav-bar');
+
+    expect(navBar).toBeTruthy();
   });
 
   it('should render the dashboard', () => {
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('.dashboard')).toBeTruthy();
+    const dashboard = compiled.querySelector('.dashboard');
+
+    expect(dashboard).toBeTruthy();
   });
 
   it('should render organization stats in the dashboard', () => {
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('.stats')).toBeTruthy();
+    const organizationStats = compiled.querySelector('.stats');
+
+    expect(organizationStats).toBeTruthy();
   });
 
   it('should render the browse all section', () => {
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('.browse-all')).toBeTruthy();
+    const browseAll = compiled.querySelector('.browse-all');
+
+    expect(browseAll).toBeTruthy();
   });
 
   it('should render repository previews in the browse all section', () => {
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('.repo-description')).toBeTruthy();
+    const firstRepoName = compiled.querySelector('.repo-name');
+
+    expect(firstRepoName).toBeTruthy();
   });
 });

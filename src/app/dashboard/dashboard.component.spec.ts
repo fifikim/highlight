@@ -48,26 +48,31 @@ describe('DashboardComponent', () => {
   });
 
   it('should render an OrgStatComponent for every organization stat received from StatService', () => {
-    const stats = fixture.debugElement.nativeElement.querySelectorAll('.stats');
+    const allStats = fixture.debugElement.nativeElement.querySelectorAll('.stats');
 
-    expect(stats.length).toEqual(6);
+    expect(allStats.length).toEqual(6);
   });
 
   it('should render the name of the repository referenced in a stat', () => {
     const compiled = fixture.debugElement.nativeElement as HTMLElement;
+    const firstStat = compiled.querySelector('.stats');
+    const firstStatRepoName = REPOSITORIES[0].name;
 
-    expect(compiled.querySelector('.stats')?.textContent).toContain(REPOSITORIES[0].name);
+    expect(firstStat?.textContent).toContain(firstStatRepoName);
   });
 
   it('should render the stat data', () => {
     const compiled = fixture.debugElement.nativeElement as HTMLElement;
+    const firstStat = compiled.querySelector('.stats');
+    const firstStatData = ORG_STATS[0];
 
-    expect(compiled.querySelector('.stats')?.textContent).toContain(ORG_STATS[0]);
+    expect(firstStat?.textContent).toContain(firstStatData);
   });
 
   it('should render the timestamp', () => {
     const compiled = fixture.debugElement.nativeElement as HTMLElement;
+    const timestamp = compiled.querySelector('.timestamp');
 
-    expect(compiled.querySelector('.timestamp')).toBeTruthy();
+    expect(timestamp).toBeTruthy();
   });
 });
