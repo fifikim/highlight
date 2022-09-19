@@ -4,6 +4,7 @@ import { RepoPreviewComponent } from '../repo-preview/repo-preview.component';
 import { RepoService } from '../repo.service';
 import { repoServiceStub } from '../test-helpers';
 import { REPOSITORIES } from '../mock-data';
+import { RouterTestingModule } from '@angular/router/testing';
 
 describe('BrowseComponent', () => {
   let component: BrowseComponent;
@@ -21,6 +22,9 @@ describe('BrowseComponent', () => {
           provide: RepoService,
           useValue: repoServiceStub
         }
+      ],
+      imports: [ 
+        RouterTestingModule
       ]
     })
     .compileComponents();

@@ -1,14 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
-import { BrowseComponent } from './browse/browse.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
 import { HeaderComponent } from './header/header.component';
-import { HomeComponent } from './home/home.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
-import { OrgStatComponent } from './org-stat/org-stat.component';
-import { RepoPreviewComponent } from './repo-preview/repo-preview.component';
-import { SearchComponent } from './search/search.component';
 
 describe('AppComponent', () => {
   let app: AppComponent;
@@ -22,13 +16,7 @@ describe('AppComponent', () => {
       declarations: [
         AppComponent,
         HeaderComponent,
-        NavBarComponent,
-        DashboardComponent,
-        BrowseComponent,
-        OrgStatComponent,
-        RepoPreviewComponent,
-        HomeComponent,
-        SearchComponent
+        NavBarComponent
       ],
     }).compileComponents();
 
@@ -55,31 +43,15 @@ describe('AppComponent', () => {
     expect(navBar).toBeTruthy();
   });
 
-  it('should render the dashboard', () => {
-    const compiled = fixture.nativeElement as HTMLElement;
-    const dashboard = compiled.querySelector('.dashboard');
+  it('should render the Home component when the current location is the root path', () => {
 
-    expect(dashboard).toBeTruthy();
   });
 
-  it('should render organization stats in the dashboard', () => {
-    const compiled = fixture.nativeElement as HTMLElement;
-    const organizationStats = compiled.querySelector('.stats');
+  it('should render the search page when the current location is "/search"', () => {
 
-    expect(organizationStats).toBeTruthy();
   });
 
-  it('should render the browse all section', () => {
-    const compiled = fixture.nativeElement as HTMLElement;
-    const browseAll = compiled.querySelector('.browse-all');
+  it('should render the detail page for a repository when the current location is "/detail/(repo name)"', () => {
 
-    expect(browseAll).toBeTruthy();
-  });
-
-  it('should render repository previews in the browse all section', () => {
-    const compiled = fixture.nativeElement as HTMLElement;
-    const firstRepoName = compiled.querySelector('.repo-name');
-
-    expect(firstRepoName).toBeTruthy();
   });
 });

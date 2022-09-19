@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { RepoDetailComponent } from './repo-detail.component';
+import { RouterTestingModule } from '@angular/router/testing';
 
 describe('RepoDetailComponent', () => {
   let component: RepoDetailComponent;
@@ -8,7 +9,10 @@ describe('RepoDetailComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ RepoDetailComponent ]
+      declarations: [ RepoDetailComponent ],
+      imports: [
+        RouterTestingModule
+      ]
     })
     .compileComponents();
 
@@ -17,7 +21,16 @@ describe('RepoDetailComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('should create the repository detail component', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should render all available details mapped in the correct format', () => {
+
+  });
+
+  it('should allow the user to navigate to the last page by clicking "back"', () => {
+
+  });
+
 });

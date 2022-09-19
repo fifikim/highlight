@@ -1,12 +1,12 @@
 <section>
   <div class="search-header" fxLayout="column" fxLayoutAlign="center stretch">
     <h1 fxFlexAlign="center">Search</h1>
+
     <form #input="ngForm" (ngSubmit)="search(input)" fxLayoutAlign="center center" >
-      <div fxFlex="75" fxFlexFill>
-        <label for="search-box"></label>
-        <input type="text" [(ngModel)]="term" name="search-box" placeholder="Enter repository name..." fxFlex />
+      <div fxFlex="75" >
+        <input [(ngModel)]="term" name="search-bar" placeholder="Enter repository name..." fxFlex />
       </div>
-      <button type="submit" >
+      <button type="submit"  >
         <span class="material-symbols-outlined">search</span>
       </button>
     </form>

@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Repository } from '../repository';
 import { RepoService } from '../repo.service';
@@ -16,11 +16,12 @@ export class SearchComponent{
   constructor(private repoService: RepoService) {}
 
   search(input :NgForm): void {
-    if (this.term.trim()) {
+    this.term = this.term.trim();
+    if (this.term) {
       this.repoService.searchRepos(this.term)
         .subscribe(repos => {
           this.results = repos;
-          this.printResults(this.results.length, this.term.trim());
+          this.printResults(this.results.length, this.term);
           input.reset();
         });
     }
