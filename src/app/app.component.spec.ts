@@ -8,8 +8,7 @@ import { HomeComponent } from './home/home.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { OrgStatComponent } from './org-stat/org-stat.component';
 import { RepoPreviewComponent } from './repo-preview/repo-preview.component';
-import { SearchBarComponent } from './search-bar/search-bar.component';
-import { SearchResultsComponent } from './search-results/search-results.component';
+import { SearchComponent } from './search/search.component';
 
 describe('AppComponent', () => {
   let app: AppComponent;
@@ -29,8 +28,7 @@ describe('AppComponent', () => {
         OrgStatComponent,
         RepoPreviewComponent,
         HomeComponent,
-        SearchResultsComponent,
-        SearchBarComponent
+        SearchComponent
       ],
     }).compileComponents();
 

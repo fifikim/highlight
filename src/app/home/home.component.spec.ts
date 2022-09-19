@@ -1,8 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { BrowseComponent } from '../browse/browse.component';
 import { DashboardComponent } from '../dashboard/dashboard.component';
-import { HeaderComponent } from '../header/header.component';
-
 import { HomeComponent } from './home.component';
 
 describe('HomeComponent', () => {

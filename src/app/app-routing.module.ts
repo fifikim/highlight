@@ -2,17 +2,22 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { RepoDetailComponent } from './repo-detail/repo-detail.component';
-import { SearchResultsComponent } from './search-results/search-results.component';
+import { SearchComponent } from './search/search.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/home', pathMatch: 'full' },
-  { path: 'home', component: HomeComponent },
-  { path: 'detail/:id', component: RepoDetailComponent },
-  { path: 'search', component: SearchResultsComponent }
+  { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
+  { path: 'dashboard', component: HomeComponent },
+  { path: 'detail/:name', component: RepoDetailComponent },
+  { path: 'search', component: SearchComponent }
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [
+    RouterModule.forRoot(
+      routes,
+      { onSameUrlNavigation: 'reload' }
+    )
+  ],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
