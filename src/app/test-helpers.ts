@@ -1,23 +1,32 @@
-import { of } from "rxjs";
+import { of, ReplaySubject } from "rxjs";
 import { REPOSITORIES, ORG_STATS } from "./mock-data";
 import { RepoService } from "./repo.service";
 import { StatService } from "./stat.service";
-import { Routes } from "@angular/router";
 import { HomeComponent } from "./home/home.component";
 import { RepoDetailComponent } from "./repo-detail/repo-detail.component";
 import { SearchComponent } from "./search/search.component";
+import { Routes } from '@angular/router';
 
-export const repoServiceStub:Partial<RepoService> = {
+export class RepoServiceStub implements Partial<RepoService> {
   getRepos() {
     return of(REPOSITORIES);
-  },
+  }
 
   getRepo() {
     return of(REPOSITORIES[0]);
-  },
+  }
 
   searchRepos(term: string) {
-    return of([REPOSITORIES[0]]);
+    switch(term) {
+      case "zagaku":
+        return of([REPOSITORIES[0]]);
+        break;
+      case "blog":
+        return of([REPOSITORIES[5], REPOSITORIES[6]]);
+        break;
+      default:
+        return of([]);
+    }
   }
 };
 
@@ -33,3 +42,4 @@ export const testRoutes: Routes = [
   { path: 'detail/:name', component: RepoDetailComponent },
   { path: 'search', component: SearchComponent }
 ];
+

@@ -1,6 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Location } from '@angular/common';
 import { RepoService } from '../repo.service';
 import { Repository } from '../repository';
 
@@ -15,8 +14,7 @@ export class RepoDetailComponent implements OnInit {
   
   constructor(
     private route: ActivatedRoute,
-    private repoService: RepoService,
-    private location: Location
+    private repoService: RepoService
   ) { }
 
   ngOnInit(): void {
@@ -34,18 +32,16 @@ export class RepoDetailComponent implements OnInit {
     }
   }
 
-  goBack(): void {
-    this.location.back();
-  }
-
   mapDetails(): void {
     if (this.repo) {
       let details = Object.entries(this.repo).map(([k, v]) => {
         let key = k === "openPRs" ? "Open PRs" : k.replace(/([A-Z])/g, " $1");
+
         let value = !v ? "not available" : v;
+
         return [key, value];
       }); 
-      this.repoDetails = details.slice(1);
+      this.repoDetails = details.slice(1, -1);
     }
   }
 }

@@ -13,7 +13,7 @@
   </div>
 
   <div *ngIf="results" class="search-results" fxLayout="column" fxLayoutAlign="center center" >
-    <h2 fxFlexAlign="start">{{resultString}}</h2>
+    <h2 id="results-info" fxFlexAlign="start">{{resultString}}</h2>
     <div fxLayout="row wrap" fxLayoutAlign="space-evenly center" fxLayoutGap="20px">
       <app-repo-preview class="repo-preview" fxFlex="3 0 0" *ngFor="let repo of results" [repo]="repo">
       </app-repo-preview>
