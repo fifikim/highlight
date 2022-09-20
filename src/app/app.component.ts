@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { RepoService } from './repo.service';
 
 @Component({
   selector: 'app-root',

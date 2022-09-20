@@ -10,6 +10,7 @@ import { Repository } from '../repository';
 })
 export class RepoDetailComponent implements OnInit {
   @Input() repo?: Repository;
+  name?: string;
   repoDetails: string[][] = [];
   
   constructor(
@@ -22,9 +23,11 @@ export class RepoDetailComponent implements OnInit {
   }
 
   getRepo(): void {
-    const name = this.route.snapshot.paramMap.get('name');
-    if (name) {
-      this.repoService.getRepo(name)
+    this.route.params.subscribe((params) => {
+      this.name = params['name'];
+    });
+    if (this.name) {
+      this.repoService.getRepo(this.name)
         .subscribe(repo => {
           this.repo = repo
           this.mapDetails()

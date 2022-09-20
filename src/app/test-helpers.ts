@@ -1,4 +1,5 @@
-import { of, ReplaySubject } from "rxjs";
+import { Component, Directive, Input, HostListener } from "@angular/core";
+import { of } from "rxjs";
 import { REPOSITORIES, ORG_STATS } from "./mock-data";
 import { RepoService } from "./repo.service";
 import { StatService } from "./stat.service";
@@ -42,4 +43,19 @@ export const testRoutes: Routes = [
   { path: 'detail/:name', component: RepoDetailComponent },
   { path: 'search', component: SearchComponent }
 ];
+
+/* eslint-disable */
+@Directive({
+  selector: '[routerLink]'
+})
+export class RouterLinkDirectiveStub {
+  @Input('routerLink') linkParams: any;
+  navigatedTo: any = null;
+
+  @HostListener('click')
+  onClick() {
+    this.navigatedTo = this.linkParams;
+  }
+}
+/* eslint-enable */
 

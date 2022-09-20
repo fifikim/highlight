@@ -1,4 +1,4 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, ComponentFixtureAutoDetect, TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { Location } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -29,7 +29,8 @@ describe('SearchComponent', () => {
         {
           provide: RepoService,
           useValue: new RepoServiceStub()
-        }
+        },
+        { provide: ComponentFixtureAutoDetect, useValue: true }
       ]
     })
     .compileComponents();
@@ -38,8 +39,6 @@ describe('SearchComponent', () => {
     location = TestBed.inject(Location);
     fixture = TestBed.createComponent(SearchComponent);
     component = fixture.componentInstance;
-    fixture.detectChanges();
-
     compiled = fixture.nativeElement;
   });
 
@@ -59,7 +58,6 @@ describe('SearchComponent', () => {
 
     searchBar.value = searchTerm;
     searchBar.dispatchEvent(new Event('input'));
-    fixture.detectChanges();
 
     expect(component.term).toEqual(searchTerm);
   });
@@ -72,7 +70,6 @@ describe('SearchComponent', () => {
 
     searchBar.dispatchEvent(new Event('input'));
     form.dispatchEvent(new Event('ngSubmit'));
-    fixture.detectChanges();
 
     const expectedResult = [REPOSITORIES[0]];
 
@@ -102,7 +99,6 @@ describe('SearchComponent', () => {
 
     searchBar.dispatchEvent(new Event('input'));
     form.dispatchEvent(new Event('ngSubmit'));
-    fixture.detectChanges();
 
     const resultsInfo = fixture.nativeElement.querySelector('#results-info');
 
@@ -117,7 +113,6 @@ describe('SearchComponent', () => {
 
     searchBar.dispatchEvent(new Event('input'));
     form.dispatchEvent(new Event('ngSubmit'));
-    fixture.detectChanges();
 
     const resultsInfo = fixture.nativeElement.querySelector('#results-info');
 
@@ -132,8 +127,6 @@ describe('SearchComponent', () => {
 
     searchBar.dispatchEvent(new Event('input'));
     form.dispatchEvent(new Event('ngSubmit'));
-    fixture.detectChanges();
-
     const resultsCount = component.results?.length;
     const previewTilesCount = compiled.querySelectorAll('.repo-preview').length;
 
@@ -148,7 +141,6 @@ describe('SearchComponent', () => {
 
     searchBar.dispatchEvent(new Event('input'));
     form.dispatchEvent(new Event('ngSubmit'));
-    fixture.detectChanges();
 
     const link = compiled.querySelector('a');
 

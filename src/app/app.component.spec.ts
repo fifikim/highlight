@@ -1,26 +1,22 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { Location } from '@angular/common';
-import { Router } from '@angular/router';
+import { ComponentFixture, TestBed, ComponentFixtureAutoDetect } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { BrowserModule, By } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
+import { testRoutes, RouterLinkDirectiveStub } from './test-helpers';
+import { DebugElement, NO_ERRORS_SCHEMA } from '@angular/core';
 import { HeaderComponent } from './header/header.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
-import { HomeComponent } from './home/home.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
-import { BrowseComponent } from './browse/browse.component';
 import { RepoDetailComponent } from './repo-detail/repo-detail.component';
 import { SearchComponent } from './search/search.component';
-import { RepoPreviewComponent } from './repo-preview/repo-preview.component';
-import { OrgStatComponent } from './org-stat/org-stat.component';
-import { testRoutes } from './test-helpers';
+import { HomeComponent } from './home/home.component';
+
 
 describe('AppComponent', () => {
   let app: AppComponent;
   let fixture: ComponentFixture<AppComponent>;
   let compiled: HTMLElement;
-  let location: Location;
-  let router: Router;
+  let linkElements: DebugElement[];
+  let routerLinks: RouterLinkDirectiveStub[];
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
@@ -32,23 +28,21 @@ describe('AppComponent', () => {
         AppComponent,
         HeaderComponent,
         NavBarComponent,
+        RouterLinkDirectiveStub,
         HomeComponent,
-        DashboardComponent,
-        OrgStatComponent,
-        BrowseComponent,
-        RepoDetailComponent,
-        RepoPreviewComponent,
-        SearchComponent
+        SearchComponent,
+        RepoDetailComponent
       ],
+      providers: [
+        { provide: ComponentFixtureAutoDetect, useValue: true }
+      ],
+      schemas: [NO_ERRORS_SCHEMA]
     }).compileComponents();
 
     fixture = TestBed.createComponent(AppComponent);
-    location = TestBed.inject(Location);
-    router = TestBed.inject(Router);
-    
     compiled = fixture.nativeElement;
-    router.initialNavigation();
-    fixture.detectChanges();
+    linkElements = fixture.debugElement.queryAll(By.directive(RouterLinkDirectiveStub));
+    routerLinks = linkElements.map(element => element.injector.get(RouterLinkDirectiveStub));
   });
 
   it('should create the app', () => {
@@ -69,39 +63,44 @@ describe('AppComponent', () => {
     expect(navBar).toBeTruthy();
   });
 
-  it('should redirect to the "/dashboard" path when current location is the root path', () => {
-    router.navigate(['']);
-    fixture.detectChanges();
-
-    expect(location.path()).toEqual('/dashboard');
+  it('should render navigation links from the header component', () => {
+    expect(linkElements.length).toBe(3);
+    expect(routerLinks.length).toBe(3);
+    expect(routerLinks[0].linkParams).toBe('/');
+    expect(routerLinks[1].linkParams).toBe('/dashboard');
+    expect(routerLinks[2].linkParams).toBe('/search');
   });
 
-  // it('should render the Home component when the current location is "/dashboard"', () => {
-  //   router.navigate(['/dashboard']);
-  //   fixture.detectChanges();
+  it('can click header title to navigate to the root path', () => {
+    const rootLink = linkElements[0];   
+    const rootLinkDirective = routerLinks[0]; 
+  
+    expect(rootLinkDirective.navigatedTo).toBeNull();
+  
+    rootLink.nativeElement.click();
+  
+    expect(rootLinkDirective.navigatedTo).toBe('/');
+  });
+  
+  it('can click dashboard link in navigation bar', () => {
+    const dashboardLink = linkElements[1];   
+    const dashboardLinkDirective = routerLinks[1];  
+  
+    expect(dashboardLinkDirective.navigatedTo).toBeNull();
+  
+    dashboardLink.nativeElement.click();
+  
+    expect(dashboardLinkDirective.navigatedTo).toBe('/dashboard');
+  });
 
-  //   const home = fixture.debugElement.query(By.directive(HomeComponent)).componentInstance;
-
-  //   expect(home).toBeTruthy();
-  // });
-
-  // it('should render the search page when the current location is "/search"', () => {
-  //   router.navigate(['/search']);
-  //   fixture.detectChanges();
-
-  //   const search = fixture.debugElement.query(By.directive(SearchComponent)).componentInstance;
-
-  //   expect(search).toBeTruthy();
-  // });
-
-  // it('should render the detail page for a repository when the current location is "/detail/(repo name)"', () => {
-  //   router.navigate(['/detail/zagaku']);
-  //   fixture.detectChanges();
-
-  //   const details = fixture.debugElement.query(By.directive(RepoDetailComponent)).componentInstance;
-  //   const repoName = compiled.querySelector('.repo-name')?.textContent;
-
-  //   expect(details).toBeTruthy();
-  //   expect(repoName).toEqual('zagaku');
-  // });
+  it('can click search link in navigation bar', () => {
+    const searchLink = linkElements[2];    
+    const searchLinkDirective = routerLinks[2];  
+  
+    expect(searchLinkDirective.navigatedTo).toBeNull();
+  
+    searchLink.nativeElement.click();
+  
+    expect(searchLinkDirective.navigatedTo).toBe('/search');
+  });
 });
