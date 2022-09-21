@@ -1,23 +1,23 @@
-html, body {
+body {
   height: 100%;
   width: 100%;
-  box-sizing: border-box;
+  max-width: 100% !important;
+  overflow-x: hidden !important;
 }
+
 h1 {
   color: rgb(2, 45, 89);
   font-family: Arial, Helvetica, sans-serif;
   font-size: 250%;
   margin: 0;
 }
+
 h2, h3 {
   color: #444;
   font-family: Arial, Helvetica, sans-serif;
   font-weight: lighter;
 }
-body, input[type="text"], button {
-  color: #333;
-  font-family: Cambria, Georgia, serif;
-}
+
 button {
   background-color: #eee;
   border: none;
@@ -31,15 +31,18 @@ button {
   margin-top: 1rem;
   font-family: Arial, Helvetica, sans-serif;
 }
+
 button:hover {
   background-color: rgb(101, 104, 122);
   color: white;
 }
+
 button:disabled {
   background-color: #eee;
   color: #aaa;
   cursor: auto;
 }
+
 a {
   color: black;
   text-decoration: none;
