@@ -48,7 +48,7 @@ export const testRoutes: Routes = [
 @Directive({
   selector: '[routerLink]'
 })
-export class RouterLinkDirectiveStub {
+export class RouterLinkStubDirective {
   @Input('routerLink') linkParams: any;
   navigatedTo: any = null;
 

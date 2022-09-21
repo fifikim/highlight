@@ -2,7 +2,7 @@ import { ComponentFixture, TestBed, ComponentFixtureAutoDetect } from '@angular/
 import { RouterTestingModule } from '@angular/router/testing';
 import { BrowserModule, By } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
-import { testRoutes, RouterLinkDirectiveStub } from './test-helpers';
+import { testRoutes, RouterLinkStubDirective } from './test-helpers';
 import { DebugElement, NO_ERRORS_SCHEMA } from '@angular/core';
 import { HeaderComponent } from './header/header.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
@@ -16,7 +16,7 @@ describe('AppComponent', () => {
   let fixture: ComponentFixture<AppComponent>;
   let compiled: HTMLElement;
   let linkElements: DebugElement[];
-  let routerLinks: RouterLinkDirectiveStub[];
+  let routerLinks: RouterLinkStubDirective[];
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
@@ -28,7 +28,7 @@ describe('AppComponent', () => {
         AppComponent,
         HeaderComponent,
         NavBarComponent,
-        RouterLinkDirectiveStub,
+        RouterLinkStubDirective,
         HomeComponent,
         SearchComponent,
         RepoDetailComponent
@@ -41,8 +41,8 @@ describe('AppComponent', () => {
 
     fixture = TestBed.createComponent(AppComponent);
     compiled = fixture.nativeElement;
-    linkElements = fixture.debugElement.queryAll(By.directive(RouterLinkDirectiveStub));
-    routerLinks = linkElements.map(element => element.injector.get(RouterLinkDirectiveStub));
+    linkElements = fixture.debugElement.queryAll(By.directive(RouterLinkStubDirective));
+    routerLinks = linkElements.map(element => element.injector.get(RouterLinkStubDirective));
   });
 
   it('should create the app', () => {

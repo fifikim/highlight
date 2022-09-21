@@ -19,10 +19,10 @@ export class RepoDetailComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.getRepo();
+    this.fetchRepo();
   }
 
-  getRepo(): void {
+  fetchRepo(): void {
     this.route.params.subscribe((params) => {
       this.name = params['name'];
     });
