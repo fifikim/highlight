@@ -12,6 +12,7 @@ export class RepoDetailComponent implements OnInit {
   @Input() repo?: Repository;
   name?: string;
   repoDetails: string[][] = [];
+  repoFound?: boolean;
   
   constructor(
     private route: ActivatedRoute,
@@ -29,8 +30,11 @@ export class RepoDetailComponent implements OnInit {
     if (this.name) {
       this.repoService.getRepo(this.name)
         .subscribe(repo => {
-          this.repo = repo
-          this.mapDetails()
+          if (repo?.name) {
+            this.repo = repo;
+            this.mapDetails();
+            this.repoFound = true;
+          }
         });
     }
   }

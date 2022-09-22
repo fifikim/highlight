@@ -1,5 +1,5 @@
-import { Component, Directive, Input, HostListener } from "@angular/core";
-import { of } from "rxjs";
+import { Directive, Input, HostListener } from "@angular/core";
+import { of, EMPTY } from "rxjs";
 import { REPOSITORIES, ORG_STATS } from "./mock-data";
 import { RepoService } from "./repo.service";
 import { StatService } from "./stat.service";
@@ -13,8 +13,11 @@ export class RepoServiceStub implements Partial<RepoService> {
     return of(REPOSITORIES);
   }
 
-  getRepo() {
-    return of(REPOSITORIES[0]);
+  getRepo(name: string) {
+    if (name === "zagaku") {
+      return of(REPOSITORIES[0]);
+    }
+    return EMPTY;
   }
 
   searchRepos(term: string) {
