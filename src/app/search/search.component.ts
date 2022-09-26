@@ -30,6 +30,7 @@ export class SearchComponent{
   printResults(count: number, term: string): void {
     let result: string;
     let punctuation: string = ":";
+
     switch(count) {
       case 0:
         result = "no repositories";
@@ -41,6 +42,7 @@ export class SearchComponent{
       default:
         result = `${count} repositories`;
     }
+    
     this.resultString = `Found ${result} matching "${term}"${punctuation}`;
   }
 }

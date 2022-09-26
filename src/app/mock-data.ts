@@ -1,5 +1,3 @@
-import { Repository } from "./repository";
-
 export const REPOSITORIES: any[] = [
   {
     name: "zagaku",

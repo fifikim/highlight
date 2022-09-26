@@ -20,7 +20,18 @@ Technologies used: Angular 14/TypeScript, RxJs, Flex-Layout, Apollo-Angular for 
 
 - <a href="https://angular.io/guide/setup-local#install-the-angular-cli">Angular 14</a>
 - <a href="https://nodejs.org/">Node.js 16.17.0</a> 
-- a <a href="https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token">GitHub GraphQL API personal access token</a> linked to a profile belonging to the 8th Light GitHub organization
+- a <a href="https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token">GitHub GraphQL API personal access token</a> linked to a profile belonging to the 8th Light GitHub organization 
+
+When creating your personal access token, request the following scopes:
+repo
+read:packages
+read:org
+read:public_key
+read:repo_hook
+user
+read:discussion
+read:enterprise
+read:gpg_key
 
 ### Installation <a name = "installation"></a>
 
