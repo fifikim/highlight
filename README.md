@@ -20,6 +20,7 @@ Technologies used: Angular 14/TypeScript, RxJs, Flex-Layout, Apollo-Angular for 
 
 - <a href="https://angular.io/guide/setup-local#install-the-angular-cli">Angular 14</a>
 - <a href="https://nodejs.org/">Node.js 16.17.0</a> 
+- a <a href="https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token">GitHub GraphQL API personal access token</a> linked to a profile belonging to the 8th Light GitHub organization
 
 ### Installation <a name = "installation"></a>
 
@@ -38,6 +39,11 @@ Install dependencies:
 npm install
 ```
 
+Enter personal API access token:
+- locate the file located at `src/environments/environment.localhost.ts sample`
+- remove the " sample" suffix from the filename 
+- replace the stored variable for `GITHUB_ACCESS_TOKEN` with your GitHub API personal access token
+
 ### Linting <a name = "linting"></a>
 ```
 npm run lint
@@ -50,12 +56,7 @@ npm run test
 
 ## Usage <a name="usage"></a>
 
-Launch the app in a new browser window:
-```
-ng serve --open
-```
-
-Or, navigate to `http://localhost:4200/` after running:
+Navigate to `http://localhost:4200/` after running:
 ```
 npm start
 ```

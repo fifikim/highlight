@@ -1,7 +1,8 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { ComponentFixture, ComponentFixtureAutoDetect, TestBed } from '@angular/core/testing';
 import { OrgStatComponent } from './org-stat.component';
-import { REPOSITORIES } from '../mock-data';
+import { ORG_STATS } from '../mock-data';
+import { RepoService } from '../repo.service';
+import { RepoServiceStub } from '../test-helpers';
 
 describe('OrgStatComponent', () => {
   let component: OrgStatComponent;
@@ -10,14 +11,21 @@ describe('OrgStatComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ OrgStatComponent ]
+      declarations: [ OrgStatComponent ],
+      providers: [
+        {
+          provide: RepoService,
+          useValue: new RepoServiceStub()
+        },
+        { provide: ComponentFixtureAutoDetect, useValue: true }
+      ]
     })
     .compileComponents();
 
     fixture = TestBed.createComponent(OrgStatComponent);
     component = fixture.componentInstance;
-    component.repo = REPOSITORIES[0];
-    component.stat = 'Test Stat';
+    component.stat = ORG_STATS[0];
+    component.viewer = 'Test Stat';
     fixture.detectChanges();
     
     compiled = fixture.nativeElement;
@@ -28,13 +36,13 @@ describe('OrgStatComponent', () => {
   });
 
   it('should receive repo as input and display its name', () => {
-    const firstOrganizationStat = compiled.querySelector('.stat');
+    const firstOrganizationStat = compiled.querySelector('#stat');
 
-    expect(firstOrganizationStat?.textContent).toContain('zagaku');
+    expect(firstOrganizationStat?.textContent).toContain('best project');
   });
 
   it('should receive as input and display stat data', () => {
-    const firstOrganizationStat = compiled.querySelector('.stat');
+    const firstOrganizationStat = compiled.querySelector('#stat');
 
     expect(firstOrganizationStat?.textContent).toContain('Test Stat');
   });

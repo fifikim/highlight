@@ -1,6 +1,8 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Observable, switchMap, filter } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
+import { MapperService } from '../mapper.service';
 import { RepoService } from '../repo.service';
 import { Repository } from '../repository';
 
@@ -12,12 +14,13 @@ import { Repository } from '../repository';
 export class RepoDetailComponent implements OnInit {
   repo?: Repository;
   name?: Observable<string>;
-  repoDetails: string[][] = [];
-  repoFound?: boolean;
+  status = new BehaviorSubject<string>("loading");
+  retrieved?: string;
   
   constructor(
     private route: ActivatedRoute,
-    private repoService: RepoService
+    private repoService: RepoService,
+    private mapperService: MapperService
   ) { }
 
   ngOnInit(): void {
@@ -33,23 +36,14 @@ export class RepoDetailComponent implements OnInit {
           return this.repoService.getRepo(params['name']);
         })
       ).subscribe(repo => {
-        if (repo?.name) {
-          this.repo = repo;
-          this.mapDetails();
-          this.repoFound = true;
+        if (!repo) {
+          this.status.next("notFound");
+        } else {
+          this.status.next("found");
+          this.repo = this.mapperService.mapRepo(repo);
+          this.retrieved = this.mapperService.date(new Date());
         }
       })
   }
-
-  mapDetails(): void {
-    if (this.repo) {
-      let details = Object.entries(this.repo).map(([k, v]) => {
-        let key = k === "openPRs" ? "Open PRs" : k.replace(/([A-Z])/g, " $1");
-        let value = !v ? "not available" : v;
-
-        return [key, value];
-      }); 
-      this.repoDetails = details.slice(1, -1);
-    }
-  }
 }
+

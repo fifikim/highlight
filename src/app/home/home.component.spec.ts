@@ -1,14 +1,19 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, ComponentFixtureAutoDetect, TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { BrowseComponent } from '../browse/browse.component';
 import { DashboardComponent } from '../dashboard/dashboard.component';
 import { OrgStatComponent } from '../org-stat/org-stat.component';
 import { RepoPreviewComponent } from '../repo-preview/repo-preview.component';
 import { HomeComponent } from './home.component';
+import { RepoService } from '../repo.service';
+import { RepoServiceStub, MapperServiceStub } from '../test-helpers';
+import { MapperService } from '../mapper.service';
 
 describe('HomeComponent', () => {
   let component: HomeComponent;
   let fixture: ComponentFixture<HomeComponent>;
+  let repoService: RepoService;
+  let mapperService: MapperService;
   let compiled: HTMLElement;
 
   beforeEach(async () => {
@@ -22,11 +27,24 @@ describe('HomeComponent', () => {
       ], 
       imports: [
         RouterTestingModule
+      ],
+      providers: [
+        {
+          provide: RepoService,
+          useValue: new RepoServiceStub()
+        },
+        {
+          provide: MapperService,
+          useValue: new MapperServiceStub()
+        },
+        { provide: ComponentFixtureAutoDetect, useValue: true }
       ]
     })
     .compileComponents();
 
     fixture = TestBed.createComponent(HomeComponent);
+    repoService = TestBed.inject(RepoService);
+    mapperService = TestBed.inject(MapperService);
     component = fixture.componentInstance;
     fixture.detectChanges();
     compiled = fixture.nativeElement;

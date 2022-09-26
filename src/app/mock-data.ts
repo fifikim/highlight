@@ -1,6 +1,6 @@
 import { Repository } from "./repository";
 
-export const REPOSITORIES: Repository[] = [
+export const REPOSITORIES: any[] = [
   {
     name: "zagaku",
     description: "Learning whilst seated",

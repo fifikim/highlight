@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Repository } from '../repository';
 import { RepoService } from '../repo.service';
+import { MapperService } from '../mapper.service';
 
 @Component({
   selector: 'app-search',
@@ -13,14 +14,14 @@ export class SearchComponent{
   results?: Repository[];
   resultString: string = "";
 
-  constructor(private repoService: RepoService) {}
+  constructor(private repoService: RepoService, private mapperService: MapperService) {}
 
   search(input :NgForm): void {
     this.term = this.term.trim();
     if (this.term) {
       this.repoService.searchRepos(this.term)
         .subscribe(repos => {
-          this.results = repos;
+          this.results = this.mapperService.mapRepos(repos);
           this.printResults(this.results.length, this.term);
         });
     }
