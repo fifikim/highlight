@@ -4,6 +4,7 @@ import { ApolloModule, Apollo, APOLLO_OPTIONS } from 'apollo-angular';
 import { HttpLink } from 'apollo-angular/http';
 import { ApolloClientOptions, InMemoryCache, ApolloLink } from '@apollo/client/core';
 import { setContext } from '@apollo/client/link/context';
+import { environment } from 'src/environments/environment.localhost';
 
 const uri = 'https://api.github.com/graphql'; 
 
@@ -15,7 +16,7 @@ export function createApollo(httpLink: HttpLink): ApolloClientOptions<any> {
   }));
 
   const auth = setContext((operation, context) => {
-    const token = 'replace me';
+    const token = environment.API_ACCESS_TOKEN;
 
     if (token === null) {
       return {};
