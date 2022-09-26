@@ -71,3 +71,16 @@ export const GET_REPO = gql`
     }
   }
 `;
+
+export const GET_REPOS = gql`
+  query repos {
+    organization(login: "8thlight") {
+      repositories(orderBy: {direction: DESC, field: UPDATED_AT}, first: 100) {
+        nodes {
+          name
+          description
+        }
+      }
+    }
+  }
+`;

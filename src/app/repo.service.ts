@@ -2,8 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable, of, map } from 'rxjs';
 import { Repository } from './repository';
 import { Apollo } from 'apollo-angular';
-import { GET_REPO, GET_VIEWER } from './queries';
-import { REPOSITORIES } from './mock-data';
+import { GET_REPO, GET_REPOS, GET_VIEWER } from './queries';
 
 @Injectable({
   providedIn: 'root'
@@ -19,8 +18,14 @@ export class RepoService {
   }
 
   getRepos(): Observable<Repository[]> {
-    const repositories = of(REPOSITORIES);
-    return repositories;
+    return this.apollo.watchQuery<any>({
+      query: GET_REPOS,
+      errorPolicy: 'all'
+    })
+    .valueChanges
+    .pipe(
+      map(result => result.data.organization.repositories.nodes)
+    );
   }
   
   getRepo(name: any): Observable<Repository> {

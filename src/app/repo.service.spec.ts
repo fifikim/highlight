@@ -44,39 +44,39 @@ describe('RepoService', () => {
     controller.expectOne('repo').flush(mockResponse(null));
   });
 
-  it('#getRepos should return a list of repositories', (done) => {
-    const expectedData: Repository[] = REPOSITORIES;
+  // it('#getRepos should return a list of repositories', (done) => {
+  //   const expectedData: Repository[] = REPOSITORIES;
 
-    service.getRepos().subscribe(data => {
-      expect(data).toEqual(expectedData);
-      done();
-    });
-  });
+  //   service.getRepos().subscribe(data => {
+  //     expect(data).toEqual(expectedData);
+  //     done();
+  //   });
+  // });
 
-  it('#searchRepos should return a list of repositories whose name matches the search term', (done) => {
-    const expectedData: Repository[] = [REPOSITORIES[1]];
+  // it('#searchRepos should return a list of repositories whose name matches the search term', (done) => {
+  //   const expectedData: Repository[] = [REPOSITORIES[1]];
 
-    service.searchRepos("magistro").subscribe(data => {
-      expect(data).toEqual(expectedData);
-      done();
-    });
-  });
+  //   service.searchRepos("magistro").subscribe(data => {
+  //     expect(data).toEqual(expectedData);
+  //     done();
+  //   });
+  // });
 
-  it('#searchRepos should return a list of repositories whose name partially matches the search term', (done) => {
-    const expectedData: Repository[] = [REPOSITORIES[1]];
+  // it('#searchRepos should return a list of repositories whose name partially matches the search term', (done) => {
+  //   const expectedData: Repository[] = [REPOSITORIES[1]];
 
-    service.searchRepos("magis").subscribe(data => {
-      expect(data).toEqual(expectedData);
-      done();
-    });
-  });
+  //   service.searchRepos("magis").subscribe(data => {
+  //     expect(data).toEqual(expectedData);
+  //     done();
+  //   });
+  // });
 
-  it('#searchRepos should return an empty list when no repositories match the search term', (done) => {
-  const expectedData: Repository[] = [];
+  // it('#searchRepos should return an empty list when no repositories match the search term', (done) => {
+  // const expectedData: Repository[] = [];
 
-    service.searchRepos("test test").subscribe(data => {
-      expect(data).toEqual(expectedData);
-      done();
-    });
-  });
+  //   service.searchRepos("test test").subscribe(data => {
+  //     expect(data).toEqual(expectedData);
+  //     done();
+  //   });
+  // });
 });
