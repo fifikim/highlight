@@ -22,7 +22,6 @@ export class SearchComponent{
         .subscribe(repos => {
           this.results = repos;
           this.printResults(this.results.length, this.term);
-          input.reset();
         });
     }
   }
