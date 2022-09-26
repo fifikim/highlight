@@ -1,4 +1,4 @@
-<section [ngSwitch]="status.value" class="detail-section" fxLayout="column" fxLayoutAlign="center center">
+<section [ngSwitch]="status | async" class="detail-section" fxLayout="column" fxLayoutAlign="center center">
   <div *ngSwitchCase="'found'" class="card detail-card" fxLayout="column" fxLayoutAlign="space-between center">
     <h1 class="repo-name">{{repo?.name}}</h1>
     <table class="details" fxFlex="3">
