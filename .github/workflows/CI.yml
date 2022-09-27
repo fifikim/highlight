@@ -24,7 +24,7 @@ jobs:
         run: npm run lint
       
       - name: Build
-        run: npm run build 
+        run: ng build --configuration production
 
       - name: Run Tests
         run: npm run test 
