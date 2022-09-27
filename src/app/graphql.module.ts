@@ -4,7 +4,7 @@ import { ApolloModule, APOLLO_OPTIONS } from 'apollo-angular';
 import { HttpLink } from 'apollo-angular/http';
 import { ApolloClientOptions, InMemoryCache, ApolloLink } from '@apollo/client/core';
 import { setContext } from '@apollo/client/link/context';
-import { environment } from 'src/environments/environment.localhost';
+import { environment } from 'src/environments/environment';
 
 const uri = 'https://api.github.com/graphql'; 
 

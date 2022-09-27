@@ -51,7 +51,7 @@ npm install
 ```
 
 Enter personal API access token:
-- locate the file located at `src/environments/environment.localhost.ts sample`
+- locate the file located at `src/environments/environment.development.ts sample`
 - remove the " sample" suffix from the filename 
 - replace the stored variable for `GITHUB_ACCESS_TOKEN` with your GitHub API personal access token
 
