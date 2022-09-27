@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { GraphQLModule } from './graphql.module';
@@ -11,6 +12,11 @@ import { BrowseComponent } from './browse/browse.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { OrgStatComponent } from './org-stat/org-stat.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
+import { SearchComponent } from './search/search.component';
+import { HomeComponent } from './home/home.component';
+import { RepoDetailComponent } from './repo-detail/repo-detail.component';
+import { NotFoundComponent } from './not-found/not-found.component';
+
 
 @NgModule({
   declarations: [
@@ -19,15 +25,20 @@ import { NavBarComponent } from './nav-bar/nav-bar.component';
     RepoPreviewComponent,
     BrowseComponent,
     DashboardComponent,
+    NavBarComponent,
     OrgStatComponent,
-    NavBarComponent
+    HomeComponent,
+    RepoDetailComponent,
+    SearchComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     GraphQLModule,
     HttpClientModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

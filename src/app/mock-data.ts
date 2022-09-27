@@ -72,7 +72,14 @@ export const REPOSITORIES: Repository[] = [
     description: "Dummy twitter bootstrap example, for a workshop",
     languages: ["HTML"],
     openPRs: 0
-  }
+  }, 
+  {
+    name: "blog2",
+    description: "Updated 8th Light Blog",
+    languages: ["HTML", "Ruby", "CSS", "Shell", "JavaScript", "SCSS"],
+    collaborators: 143,
+    openPRs: 14
+  },
 ]
 
 export const ORG_STATS: string[] = [

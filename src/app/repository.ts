@@ -4,11 +4,5 @@ export interface Repository {
   languages: string[];
   collaborators?: number;
   openPRs: number;
-  lastCommit?: Commit;
-}
-
-export interface Commit {
-  message: string;
-  author: string;
-  date: string;
+  lastCommit?: Object;
 }

@@ -10,17 +10,13 @@ select {
   color: black;
   font-size: 1rem;
   padding: .5rem 1rem;
-  margin-right: 1rem;
   margin-bottom: 1rem;
   margin-top: 1rem;
 }
 
 .repo-preview {
-  margin: 10px 0;
+  margin: 20px;
   min-width: 250px;
   max-width: 300px;
 }
 
-.repo-preview:last-child {
-  margin-right: 20px;
-}
