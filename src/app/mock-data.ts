@@ -207,7 +207,7 @@ export const REPO1_SERVER_DATA = {
 export const REPO1_SERVICE_DATA = REPO1_SERVER_DATA.repository;
 
 export const REPO1_MAPPED_DETAIL = {
-  createdAt: "Thursday, Oct 1, 2015, 04:46:10 AM",
+  createdAt: "Thursday, Oct 1, 2015, 08:46:10 AM",
   description: "Learning whilst seated",
   issues: 50,
   languages: "Java, HTML, CSS, Python, Go, Jupyter Notebook, Dockerfile, JavaScript",
@@ -215,7 +215,7 @@ export const REPO1_MAPPED_DETAIL = {
     Message: 'Add basic stateful react component example', 
     Author: 'Daisy Molving', 
     Branch: 'add-react-hello-world', 
-    Date: 'Tuesday, Jan 16, 2018, 06:05:30 AM'
+    Date: 'Tuesday, Jan 16, 2018, 11:05:30 AM'
   },
   lastPR: {
     Title: 'Add basic stateful react component example', 
@@ -224,7 +224,7 @@ export const REPO1_MAPPED_DETAIL = {
     Reviews: 1, 
     Date: 'Invalid Date'
   },
-  lastUpdated: "Friday, Mar 18, 2022, 05:34:46 PM",
+  lastUpdated: "Friday, Mar 18, 2022, 09:34:46 PM",
   name: "zagaku",
   openPRs: 64,
   primaryLanguage: "Jupyter Notebook",
@@ -323,7 +323,7 @@ export const REPO2_SERVER_DATA = {
 export const REPO2_SERVICE_DATA = REPO2_SERVER_DATA.repository;
 
 export const REPO2_MAPPED_DETAIL = {
-  createdAt: "Tuesday, Dec 7, 2010, 12:29:28 PM",
+  createdAt: "Tuesday, Dec 7, 2010, 05:29:28 PM",
   description: "A path to mastery teaching tool",
   issues: 0,
   languages: "JavaScript, Ruby",
@@ -331,10 +331,10 @@ export const REPO2_MAPPED_DETAIL = {
     Message: 'Refactored ReaderFactory to follow null object pattern', 
     Author: 'Brian Pratt', 
     Branch: 'master', 
-    Date: 'Monday, Jan 10, 2011, 02:37:33 PM'
+    Date: 'Monday, Jan 10, 2011, 07:37:33 PM'
   },
   lastPR: undefined,
-  lastUpdated: "Wednesday, Aug 6, 2014, 10:54:48 AM",
+  lastUpdated: "Wednesday, Aug 6, 2014, 02:54:48 PM",
   name: "magistro",
   openPRs: 0,
   primaryLanguage: "Ruby",
