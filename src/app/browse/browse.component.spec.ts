@@ -1,12 +1,12 @@
 import { ComponentFixture, ComponentFixtureAutoDetect, TestBed } from '@angular/core/testing';
+import { RouterTestingModule } from '@angular/router/testing';
+import { Location } from '@angular/common';
 import { BrowseComponent } from './browse.component';
 import { RepoPreviewComponent } from '../repo-preview/repo-preview.component';
 import { RepoService } from '../repo.service';
 import { MapperService } from '../mapper.service';
 import { RepoServiceStub, MapperServiceStub, testRoutes } from '../test-helpers';
 import { REPOSITORIES } from '../mock-data';
-import { RouterTestingModule } from '@angular/router/testing';
-import { Location } from '@angular/common';
 
 describe('BrowseComponent', () => {
   let component: BrowseComponent;

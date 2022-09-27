@@ -88,3 +88,271 @@ export const ORG_STATS: string[] = [
   "weirdest project",
   "most fun"
 ]
+
+export const REPO1_SERVER_DATA = {
+  "repository": {
+    "__typename": "Repository",
+    "name": "zagaku",
+    "description": "Learning whilst seated",
+    "url": "https://github.com/8thlight/zagaku",
+    "languages": {
+      "__typename": "LanguageConnection",
+      "nodes": [
+        {
+          "__typename": "Language",
+          "name": "Java"
+        },
+        {
+          "__typename": "Language",
+          "name": "HTML"
+        },
+        {
+          "__typename": "Language",
+          "name": "CSS"
+        },
+        {
+          "__typename": "Language",
+          "name": "Python"
+        },
+        {
+          "__typename": "Language",
+          "name": "Go"
+        },
+        {
+          "__typename": "Language",
+          "name": "Jupyter Notebook"
+        },
+        {
+          "__typename": "Language",
+          "name": "Dockerfile"
+        },
+        {
+          "__typename": "Language",
+          "name": "JavaScript"
+        }
+      ]
+    },
+    "primaryLanguage": {
+      "__typename": "Language",
+      "name": "Jupyter Notebook"
+    },
+    "createdAt": "2015-10-01T08:46:10Z",
+    "updatedAt": "2022-03-18T21:34:46Z",
+    "issues": {
+      "__typename": "IssueConnection",
+      "totalCount": 50
+    },
+    "watchers": {
+      "__typename": "UserConnection",
+      "totalCount": 32
+    },
+    "pullRequests": {
+      "__typename": "PullRequestConnection",
+      "totalCount": 64,
+      "edges": [
+        {
+          "__typename": "PullRequestEdge",
+          "node": {
+            "__typename": "PullRequest",
+            "state": "MERGED",
+            "reviews": {
+              "__typename": "PullRequestReviewConnection",
+              "totalCount": 1
+            },
+            "title": "Add basic stateful react component example",
+            "author": {
+              "__typename": "User",
+              "login": "DaisyMolving"
+            },
+            "updatedAt": "2021-08-23T19:08:47Z"
+          }
+        }
+      ]
+    },
+    "refs": {
+      "__typename": "RefConnection",
+      "edges": [
+        {
+          "__typename": "RefEdge",
+          "node": {
+            "__typename": "Ref",
+            "name": "add-react-hello-world",
+            "target": {
+              "__typename": "Commit",
+              "history": {
+                "__typename": "CommitHistoryConnection",
+                "edges": [
+                  {
+                    "__typename": "CommitEdge",
+                    "node": {
+                      "__typename": "Commit",
+                      "message": "Add basic stateful react component example",
+                      "committedDate": "2018-01-16T11:05:30Z",
+                      "author": {
+                        "__typename": "GitActor",
+                        "name": "Daisy Molving"
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}
+
+export const REPO1_SERVICE_DATA = REPO1_SERVER_DATA.repository;
+
+export const REPO1_MAPPED_DETAIL = {
+  createdAt: "Thursday, Oct 1, 2015, 04:46:10 AM",
+  description: "Learning whilst seated",
+  issues: 50,
+  languages: "Java, HTML, CSS, Python, Go, Jupyter Notebook, Dockerfile, JavaScript",
+  lastCommit: {
+    Message: 'Add basic stateful react component example', 
+    Author: 'Daisy Molving', 
+    Branch: 'add-react-hello-world', 
+    Date: 'Tuesday, Jan 16, 2018, 06:05:30 AM'
+  },
+  lastPR: {
+    Title: 'Add basic stateful react component example', 
+    State: 'MERGED', 
+    Account: 'DaisyMolving', 
+    Reviews: 1, 
+    Date: 'Invalid Date'
+  },
+  lastUpdated: "Friday, Mar 18, 2022, 05:34:46 PM",
+  name: "zagaku",
+  openPRs: 64,
+  primaryLanguage: "Jupyter Notebook",
+  url: "https://github.com/8thlight/zagaku",
+  watchers: 32
+}
+
+export const REPO1_MAPPED_PREVIEW = {
+  createdAt: undefined,
+  description: "Learning whilst seated",
+  issues: undefined,
+  languages: undefined,
+  lastCommit: undefined,
+  lastPR: undefined,
+  lastUpdated: undefined,
+  name: "zagaku",
+  openPRs: undefined,
+  primaryLanguage: undefined,
+  url: undefined,
+  watchers: undefined,
+}
+
+export const REPO2_SERVER_DATA = {
+  "repository" : {
+    "__typename": "Repository",
+    "name": "magistro",
+    "description": "A path to mastery teaching tool",
+    "url": "https://github.com/8thlight/magistro",
+    "languages": {
+      "__typename": "LanguageConnection",
+      "nodes": [
+        {
+          "__typename": "Language",
+          "name": "JavaScript"
+        },
+        {
+          "__typename": "Language",
+          "name": "Ruby"
+        }
+      ]
+    },
+    "primaryLanguage": {
+      "__typename": "Language",
+      "name": "Ruby"
+    },
+    "createdAt": "2010-12-07T17:29:28Z",
+    "updatedAt": "2014-08-06T14:54:48Z",
+    "issues": {
+      "__typename": "IssueConnection",
+      "totalCount": 0
+    },
+    "watchers": {
+      "__typename": "UserConnection",
+      "totalCount": 97
+    },
+    "pullRequests": {
+      "__typename": "PullRequestConnection",
+      "totalCount": 0,
+      "edges": []
+    },
+    "refs": {
+      "__typename": "RefConnection",
+      "edges": [
+        {
+          "__typename": "RefEdge",
+          "node": {
+            "__typename": "Ref",
+            "name": "master",
+            "target": {
+              "__typename": "Commit",
+              "history": {
+                "__typename": "CommitHistoryConnection",
+                "edges": [
+                  {
+                    "__typename": "CommitEdge",
+                    "node": {
+                      "__typename": "Commit",
+                      "message": "Refactored ReaderFactory to follow null object pattern",
+                      "committedDate": "2011-01-10T19:37:33Z",
+                      "author": {
+                        "__typename": "GitActor",
+                        "name": "Brian Pratt"
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}
+
+export const REPO2_SERVICE_DATA = REPO2_SERVER_DATA.repository;
+
+export const REPO2_MAPPED_DETAIL = {
+  createdAt: "Tuesday, Dec 7, 2010, 12:29:28 PM",
+  description: "A path to mastery teaching tool",
+  issues: 0,
+  languages: "JavaScript, Ruby",
+  lastCommit: {
+    Message: 'Refactored ReaderFactory to follow null object pattern', 
+    Author: 'Brian Pratt', 
+    Branch: 'master', 
+    Date: 'Monday, Jan 10, 2011, 02:37:33 PM'
+  },
+  lastPR: undefined,
+  lastUpdated: "Wednesday, Aug 6, 2014, 10:54:48 AM",
+  name: "magistro",
+  openPRs: 0,
+  primaryLanguage: "Ruby",
+  url: "https://github.com/8thlight/magistro",
+  watchers: 97
+}
+
+export const REPO2_MAPPED_PREVIEW = {
+  createdAt: undefined,
+  description: "A path to mastery teaching tool",
+  issues: undefined,
+  languages: undefined,
+  lastCommit: undefined,
+  lastPR: undefined,
+  lastUpdated: undefined,
+  name: "magistro",
+  openPRs: undefined,
+  primaryLanguage: undefined,
+  url: undefined,
+  watchers: undefined,
+}

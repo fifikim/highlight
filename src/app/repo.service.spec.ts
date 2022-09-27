@@ -2,8 +2,8 @@ import { TestBed } from '@angular/core/testing';
 import { RepoService } from './repo.service';
 import { ApolloTestingModule, ApolloTestingController } from 'apollo-angular/testing';
 import { Repository } from './repository';
-import { REPOSITORIES } from './mock-data';
-import { REPO_DATA1, REPO_SEARCH } from './test-helpers';
+import { REPOSITORIES, REPO1_SERVER_DATA } from './mock-data';
+import { mockResponse } from './test-helpers';
 
 describe('RepoService', () => {
   let service: RepoService;
@@ -26,23 +26,23 @@ describe('RepoService', () => {
     expect(service).toBeTruthy();
   });
 
-  // it('#getRepo should return a single repository whose name matches the query parameter', (done) => {
-  //   service.getRepo('zagaku').subscribe(data => {
-  //     expect(data).toEqual(REPO_DATA1);
-  //     done();
-  //   });
+  it('#getRepo should return a single repository whose name matches the query parameter', (done) => {
+    service.getRepo('zagaku').subscribe(data => {
+      expect(data).toEqual(REPO1_SERVER_DATA);
+      done();
+    });
 
-  //   controller.expectOne('repo').flush(REPO_SEARCH);
-  // });
+    controller.expectOne('repo').flush(mockResponse(REPO1_SERVER_DATA));
+  });
 
-  // it('#getRepo should return null when no repository name matches the query parameter', (done) => {
-  //   service.getRepo('bad_name').subscribe(data => {
-  //     expect(data).toBeNull();
-  //     done();
-  //   });
+  it('#getRepo should return null when no repository name matches the query parameter', (done) => {
+    service.getRepo('bad_name').subscribe(data => {
+      expect(data).toBeNull();
+      done();
+    });
 
-  //   controller.expectOne('repo').flush(REPO_SEARCH);
-  // });
+    controller.expectOne('repo').flush(mockResponse(null));
+  });
 
   it('#getRepos should return a list of repositories', (done) => {
     const expectedData: Repository[] = REPOSITORIES;

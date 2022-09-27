@@ -29,7 +29,7 @@ export class RepoService {
       variables: {
         name: name,
       },
-      errorPolicy: 'all'
+      errorPolicy: 'ignore'
     })
     .valueChanges
     .pipe(
