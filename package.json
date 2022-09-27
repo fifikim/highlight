@@ -7,8 +7,8 @@
     "build": "ng build",
     "build:prod": "ng build --configuration production",
     "test": "TZ=utc jest",
-    "test:watch": "jest --watchAll",
-    "test:coverage": "jest --coverage",
+    "test:watch": "TZ=utc jest --watchAll",
+    "test:coverage": "TZ=utc jest --coverage",
     "lint": "ng lint"
   },
   "private": true,
