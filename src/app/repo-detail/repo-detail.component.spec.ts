@@ -4,7 +4,7 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { BehaviorSubject } from 'rxjs';
 import { MapperService } from '../mapper.service';
 import { RepoService } from '../repo.service';
-import { RepoServiceStub, MapperServiceStub, testRoutes } from '../test-helpers';
+import { repoServiceMock, mapperServiceMock, testRoutes } from '../test-helpers';
 import { RepoDetailComponent } from './repo-detail.component';
 
 describe('RepoDetailComponent', () => {
@@ -30,11 +30,11 @@ describe('RepoDetailComponent', () => {
         },
         {
           provide: RepoService,
-          useValue: new RepoServiceStub()
+          useValue: repoServiceMock
         },
         {
           provide: MapperService,
-          useValue: new MapperServiceStub()
+          useValue: mapperServiceMock
         },
         { provide: ComponentFixtureAutoDetect, useValue: true }
       ]

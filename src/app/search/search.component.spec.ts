@@ -6,7 +6,7 @@ import { SearchComponent } from './search.component';
 import { RepoPreviewComponent } from '../repo-preview/repo-preview.component';
 import { RepoService } from '../repo.service';
 import { MapperService } from '../mapper.service';
-import { RepoServiceStub, MapperServiceStub, testRoutes } from '../test-helpers';
+import { repoServiceMock, mapperServiceMock, testRoutes } from '../test-helpers';
 import { REPOSITORIES } from '../mock-data';
 
 describe('SearchComponent', () => {
@@ -29,11 +29,11 @@ describe('SearchComponent', () => {
       providers: [
         {
           provide: RepoService,
-          useValue: new RepoServiceStub()
+          useValue: repoServiceMock
         },
         {
           provide: MapperService,
-          useValue: new MapperServiceStub()
+          useValue: mapperServiceMock
         },
         { provide: ComponentFixtureAutoDetect, useValue: true }
       ]

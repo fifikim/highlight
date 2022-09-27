@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable, of, map } from 'rxjs';
+import { Observable, of, map, tap } from 'rxjs';
 import { Repository } from './repository';
 import { Apollo } from 'apollo-angular';
 import { GET_REPO, GET_REPOS, GET_VIEWER } from './queries';
@@ -40,19 +40,5 @@ export class RepoService {
     .pipe(
       map(result => result.data.repository)
     );
-  }
-
-  searchRepos(term: string): Observable<Repository[]> {
-    if (!term.trim()) {
-      return of([]);
-    }
-
-    const regexp = new RegExp(term, 'i');
-
-    return this.getRepos().pipe(
-      map(repos => 
-        repos.filter(repo => regexp.test(repo.name))
-      )
-    )
   }
 }

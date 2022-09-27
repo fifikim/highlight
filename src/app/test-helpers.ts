@@ -1,59 +1,29 @@
 import { Directive, Input, HostListener } from "@angular/core";
 import { of } from "rxjs";
-import { REPOSITORIES, ORG_STATS } from "./mock-data";
-import { RepoService } from "./repo.service";
-import { StatService } from "./stat.service";
-import { MapperService } from "./mapper.service";
+import { REPOSITORIES, MOST_WATCHED_MAPPED, MOST_WATCHED_SERVICE_DATA } from "./mock-data";
 import { HomeComponent } from "./home/home.component";
 import { RepoDetailComponent } from "./repo-detail/repo-detail.component";
 import { SearchComponent } from "./search/search.component";
 import { Routes } from '@angular/router';
-import { Repository } from "./repository";
 
-export class RepoServiceStub implements Partial<RepoService> {
-  testAuthentication() {
-    return of('user account');
-  }
+export const statServiceMock = {
+  getMostWatched: jest.fn(() => of(MOST_WATCHED_SERVICE_DATA))
+}
 
-  getRepos() {
-    return of(REPOSITORIES);
-  }
+export const mapperServiceMock = {
+  mapRepo: jest.fn(repo => repo),
+  mapRepos: jest.fn(repos => repos),
+  mapMostWatched: jest.fn(data => MOST_WATCHED_MAPPED)
+}
 
-  getRepo(name: string) {
-    if (name === "zagaku") {
+export const repoServiceMock = {
+  getRepos: jest.fn(() => of(REPOSITORIES)),
+  getRepo: jest.fn((repoName) => {
+    if (repoName === "zagaku") {
       return of(REPOSITORIES[0]);
     }
     return of(null);
-  }
-
-  searchRepos(term: string) {
-    switch(term) {
-      case "zagaku":
-        return of([REPOSITORIES[0]]);
-        break;
-      case "blog":
-        return of([REPOSITORIES[5], REPOSITORIES[6]]);
-        break;
-      default:
-        return of([]);
-    }
-  }
-};
-
-export const orgStatServiceStub: Partial<StatService> = {
-  getOrgStats() {
-    return of(ORG_STATS);
-  }
-};
-
-export class MapperServiceStub implements Partial<MapperService> {
-  mapRepo(repo: Repository) {
-    return repo;
-  }
-
-  mapRepos(repos: Repository[]) {
-    return repos;
-  }
+  })
 }
 
 export const testRoutes: Routes = [
@@ -63,13 +33,25 @@ export const testRoutes: Routes = [
   { path: 'search', component: SearchComponent }
 ];
 
-export const mockResponse = (response: any) => {
+export const mockRepoResponse = (data: any) => {
   return {
     "data": {
-      "repository": response
+      "repository": data
     }
   }
 };
+
+export const mockReposResponse = (data: any) => {
+  return {
+    "data": {
+      "organization": {
+        "repositories": {
+          "nodes": data
+        }
+      }
+    }
+  }
+}
 
 /* eslint-disable */
 @Directive({

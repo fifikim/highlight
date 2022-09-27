@@ -2,11 +2,12 @@ import { ComponentFixture, ComponentFixtureAutoDetect, TestBed } from '@angular/
 import { RouterTestingModule } from '@angular/router/testing';
 import { BrowseComponent } from '../browse/browse.component';
 import { DashboardComponent } from '../dashboard/dashboard.component';
-import { OrgStatComponent } from '../org-stat/org-stat.component';
+import { RepoStatComponent } from '../repo-stat/repo-stat.component';
 import { RepoPreviewComponent } from '../repo-preview/repo-preview.component';
 import { HomeComponent } from './home.component';
 import { RepoService } from '../repo.service';
-import { RepoServiceStub, MapperServiceStub } from '../test-helpers';
+import { StatService } from '../stat.service';
+import { repoServiceMock, statServiceMock, mapperServiceMock } from '../test-helpers';
 import { MapperService } from '../mapper.service';
 
 describe('HomeComponent', () => {
@@ -14,6 +15,7 @@ describe('HomeComponent', () => {
   let fixture: ComponentFixture<HomeComponent>;
   let repoService: RepoService;
   let mapperService: MapperService;
+  let statService: StatService;
   let compiled: HTMLElement;
 
   beforeEach(async () => {
@@ -23,7 +25,7 @@ describe('HomeComponent', () => {
         DashboardComponent,
         BrowseComponent,
         RepoPreviewComponent,
-        OrgStatComponent
+        RepoStatComponent
       ], 
       imports: [
         RouterTestingModule
@@ -31,11 +33,15 @@ describe('HomeComponent', () => {
       providers: [
         {
           provide: RepoService,
-          useValue: new RepoServiceStub()
+          useValue: repoServiceMock
+        },
+        {
+          provide: StatService,
+          useValue: statServiceMock
         },
         {
           provide: MapperService,
-          useValue: new MapperServiceStub()
+          useValue: mapperServiceMock
         },
         { provide: ComponentFixtureAutoDetect, useValue: true }
       ]
@@ -44,6 +50,7 @@ describe('HomeComponent', () => {
 
     fixture = TestBed.createComponent(HomeComponent);
     repoService = TestBed.inject(RepoService);
+    statService = TestBed.inject(StatService);
     mapperService = TestBed.inject(MapperService);
     component = fixture.componentInstance;
     fixture.detectChanges();
@@ -61,9 +68,9 @@ describe('HomeComponent', () => {
   });
 
   it('should render organization stats in the dashboard', () => {
-    const organizationStats = compiled.querySelector('.stats');
+    const mostWatched = compiled.querySelector('.stats');
 
-    expect(organizationStats).toBeTruthy();
+    expect(mostWatched).toBeTruthy();
   });
 
   it('should render the browse all section', () => {

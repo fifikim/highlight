@@ -84,3 +84,23 @@ export const GET_REPOS = gql`
     }
   }
 `;
+
+export const GET_MOST_WATCHED = gql`
+  query mostWatched {
+    search(
+        query: "org:8thlight sort:stars-desc",
+        type: REPOSITORY,
+        first: 3,
+        after: null
+    ) {
+        nodes {
+            ... on Repository {
+                name
+                watchers {
+                    totalCount
+                }
+            }
+        }
+    }
+  }
+`;

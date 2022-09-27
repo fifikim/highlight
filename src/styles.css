@@ -58,6 +58,10 @@ a {
   text-align: center;
 }
 
+.card-small {
+  padding: 5%;
+}
+
 * {
   font-family: Arial, Helvetica, sans-serif;
 }
