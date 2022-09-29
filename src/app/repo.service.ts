@@ -23,7 +23,7 @@ export class RepoService {
     return repositories;
   }
   
-  getRepo(name: any): Observable<Repository> {
+  getRepo(name: string): Observable<Repository> {
     return this.apollo.watchQuery<any>({
       query: GET_REPO,      
       variables: {

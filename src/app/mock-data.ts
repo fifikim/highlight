@@ -222,7 +222,7 @@ export const REPO1_MAPPED_DETAIL = {
     State: 'MERGED', 
     Account: 'DaisyMolving', 
     Reviews: 1, 
-    Date: 'Invalid Date'
+    Date: 'Monday, Aug 23, 2021, 07:08:47 PM'
   },
   lastUpdated: "Friday, Mar 18, 2022, 09:34:46 PM",
   name: "zagaku",

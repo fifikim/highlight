@@ -78,7 +78,7 @@ export class MapperService {
         State: pullRequest['state'],
         Account: pullRequest['author']['login'],
         Reviews: pullRequest['reviews']['totalCount'],
-        Date: this.date(pullRequest['createdAt'])
+        Date: this.date(pullRequest['updatedAt'])
       }
     }
   }
