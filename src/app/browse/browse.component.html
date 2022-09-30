@@ -1,6 +1,6 @@
 <div class="browse-all" fxLayout="column" >
 
-  <div fxLayout="row" fxLayoutAlign="space-between">
+  <div *ngIf="loaded.value; else loading" fxLayout="row" fxLayoutAlign="space-between">
     <h2>Browse All Repositories</h2>
     <select>
       <option value=""> -- Sort By -- </option>
@@ -12,6 +12,10 @@
     <app-repo-preview class="repo-preview" fxFlex="3 0 0" *ngFor="let repo of repos" [repo]="repo">
     </app-repo-preview>
   </div>
+
+  <ng-template #loading>
+    <h2>Loading Repositories...</h2>
+  </ng-template>
 </div>
 
 

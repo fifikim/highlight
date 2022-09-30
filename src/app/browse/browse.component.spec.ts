@@ -1,17 +1,19 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, ComponentFixtureAutoDetect, TestBed } from '@angular/core/testing';
+import { RouterTestingModule } from '@angular/router/testing';
+import { Location } from '@angular/common';
 import { BrowseComponent } from './browse.component';
 import { RepoPreviewComponent } from '../repo-preview/repo-preview.component';
 import { RepoService } from '../repo.service';
-import { RepoServiceStub, testRoutes } from '../test-helpers';
+import { MapperService } from '../mapper.service';
+import { RepoServiceStub, MapperServiceStub, testRoutes } from '../test-helpers';
 import { REPOSITORIES } from '../mock-data';
-import { RouterTestingModule } from '@angular/router/testing';
-import { Location } from '@angular/common';
 
 describe('BrowseComponent', () => {
   let component: BrowseComponent;
   let fixture: ComponentFixture<BrowseComponent>;
   let compiled: HTMLElement;
   let repoService: RepoService;
+  let mapperService: MapperService;
   let location: Location;
 
   beforeEach(async () => {
@@ -24,7 +26,12 @@ describe('BrowseComponent', () => {
         {
           provide: RepoService,
           useValue: new RepoServiceStub()
-        }
+        },
+        {
+          provide: MapperService,
+          useValue: new MapperServiceStub()
+        },
+        { provide: ComponentFixtureAutoDetect, useValue: true }
       ],
       imports: [ 
         RouterTestingModule.withRoutes(testRoutes)
@@ -33,6 +40,7 @@ describe('BrowseComponent', () => {
     .compileComponents();
 
     repoService = TestBed.inject(RepoService);
+    mapperService = TestBed.inject(MapperService);
     location = TestBed.inject(Location);
     fixture = TestBed.createComponent(BrowseComponent);
     component = fixture.componentInstance;

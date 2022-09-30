@@ -50,19 +50,6 @@ describe('DashboardComponent', () => {
     expect(component.repos).toEqual(REPOSITORIES);
   });
 
-  it('should render an OrgStatComponent for every organization stat received from StatService', () => {
-    const allStats = compiled.querySelectorAll('.stats');
-
-    expect(allStats.length).toEqual(6);
-  });
-
-  it('should render the name of the repository referenced in a stat', () => {
-    const firstStat = compiled.querySelector('.stats');
-    const firstStatRepoName = REPOSITORIES[0].name;
-
-    expect(firstStat?.textContent).toContain(firstStatRepoName);
-  });
-
   it('should render the stat data', () => {
     const firstStat = compiled.querySelector('.stats');
     const firstStatData = ORG_STATS[0];

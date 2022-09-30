@@ -20,5 +20,6 @@
 }
 
 .timestamp {
+  height: 30px;
   color: slategray;
 }

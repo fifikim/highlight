@@ -10,7 +10,6 @@ import { RepoDetailComponent } from './repo-detail/repo-detail.component';
 import { SearchComponent } from './search/search.component';
 import { HomeComponent } from './home/home.component';
 
-
 describe('AppComponent', () => {
   let app: AppComponent;
   let fixture: ComponentFixture<AppComponent>;

@@ -2,15 +2,16 @@ import { ComponentFixture, ComponentFixtureAutoDetect, TestBed } from '@angular/
 import { ActivatedRoute } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
 import { BehaviorSubject } from 'rxjs';
+import { MapperService } from '../mapper.service';
 import { RepoService } from '../repo.service';
-import { RepoServiceStub, testRoutes } from '../test-helpers';
+import { RepoServiceStub, MapperServiceStub, testRoutes } from '../test-helpers';
 import { RepoDetailComponent } from './repo-detail.component';
-
 
 describe('RepoDetailComponent', () => {
   let component: RepoDetailComponent;
   let fixture: ComponentFixture<RepoDetailComponent>;
   let repoService: RepoService;
+  let mapperService: MapperService;
   let compiled: HTMLElement;
   let repoName: BehaviorSubject<any> = new BehaviorSubject<any>("");
 
@@ -31,6 +32,10 @@ describe('RepoDetailComponent', () => {
           provide: RepoService,
           useValue: new RepoServiceStub()
         },
+        {
+          provide: MapperService,
+          useValue: new MapperServiceStub()
+        },
         { provide: ComponentFixtureAutoDetect, useValue: true }
       ]
     })
@@ -38,6 +43,7 @@ describe('RepoDetailComponent', () => {
 
     fixture = TestBed.createComponent(RepoDetailComponent);
     repoService = TestBed.inject(RepoService);
+    mapperService = TestBed.inject(MapperService);
     component = fixture.componentInstance;
   });
 
@@ -51,8 +57,12 @@ describe('RepoDetailComponent', () => {
     fixture = TestBed.createComponent(RepoDetailComponent);
     compiled = fixture.nativeElement;
 
+    const notFound = compiled.querySelector('.not-found');
+    const loading = compiled.querySelector('#loading');
     const renderedName = compiled.querySelector('.repo-name')?.textContent;
 
+    expect(notFound).toBeFalsy();
+    expect(loading).toBeFalsy();
     expect(renderedName).toEqual('zagaku');
   });
 
@@ -63,9 +73,11 @@ describe('RepoDetailComponent', () => {
     compiled = fixture.nativeElement;
 
     const notFound = compiled.querySelector('.not-found');
+    const loading = compiled.querySelector('#loading');
     const renderedName = compiled.querySelector('.repo-name')?.textContent;
 
     expect(notFound).toBeTruthy();
+    expect(loading).toBeFalsy();
     expect(renderedName).toBeFalsy();
   });
 });

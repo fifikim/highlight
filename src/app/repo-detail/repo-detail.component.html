@@ -1,18 +1,73 @@
-<section *ngIf="repoFound; else notFound" class="detail-section" fxLayout="column" fxLayoutAlign="center center">
-  <div class="card detail-card" fxLayout="column" fxLayoutAlign="space-between center">
+<section [ngSwitch]="status | async" class="detail-section" fxLayout="column" fxLayoutAlign="center center">
+  <div *ngSwitchCase="'found'" class="card detail-card" fxLayout="column" fxLayoutAlign="space-between center">
     <h1 class="repo-name">{{repo?.name}}</h1>
     <table class="details" fxFlex="3">
-      <tr *ngFor="let stat of repoDetails">
-        <td class="key">{{stat[0]}}:  </td>
-        <td>{{stat[1]}}</td>
+      <tr>
+        <td class="key">Description:  </td>
+        <td>{{repo?.description || "not available"}}</td>
+      </tr>
+      <tr>
+        <td class="key">GitHub URL:  </td>
+        <td><a id="gh-link" href="{{repo?.url}}">{{repo?.url}}</a></td>
+      </tr>
+      <tr>
+        <td class="key">Languages:  </td>
+        <td>{{repo?.languages || "not available"}}</td>
+      </tr>
+      <tr>
+        <td class="key">Primary Language:  </td>
+        <td>{{repo?.primaryLanguage || "not available"}}</td>
+      </tr>
+      <tr>
+        <td class="key">Watchers:  </td>
+        <td>{{repo?.watchers}}</td>
+      </tr>
+      <tr>
+        <td class="key">Total Pull Requests:  </td>
+        <td>{{repo?.openPRs}}</td>
+      </tr>
+      <tr>
+        <td class="key">Issues:  </td>
+        <td>{{repo?.issues}}</td>
+      </tr>
+      <tr>
+        <td class="key">Created At:  </td>
+        <td>{{repo?.createdAt}}</td>
+      </tr>
+      <tr>
+        <td class="key">Last Updated:  </td>
+        <td>{{repo?.lastUpdated}}</td>
+      </tr>
+      <tr>
+        <td class="key">Most Recent Pull Request:  </td>
+        <td *ngIf="repo?.lastPR; else elseBlock">
+          <tr *ngFor="let prDetail of repo?.lastPR | keyvalue">
+            {{prDetail.key}}: {{prDetail.value}}
+          </tr>
+        </td>
+        <ng-template #elseBlock><td>not available</td></ng-template>
+      </tr>
+      <tr>
+        <td class="key">Most Recent Commit:  </td>
+        <td *ngIf="repo?.lastCommit; else elseBlock">
+          <tr *ngFor="let commitDetail of repo?.lastCommit | keyvalue">
+            {{commitDetail.key}}: {{commitDetail.value}}
+          </tr>
+        </td>
+        <ng-template #elseBlock><td>not available</td></ng-template>
       </tr>
     </table>
+    <div>Retrieved: {{retrieved}}</div>
   </div>
-</section>
 
-<ng-template #notFound>
-  <div class="card detail-card" fxLayout="column" fxLayoutAlign="space-between center">
+  <div *ngSwitchCase="'notFound'" class="card detail-card" fxLayout="column" fxLayoutAlign="space-between center">
     <h1 class="not-found">not found</h1>
     <div class="details" fxFlex="3">Sorry, could not locate a repository named "{{name}}."</div>
   </div>
-</ng-template>
+
+  <div *ngSwitchCase="'loading'" id="loading" >
+    <h3>Loading...</h3>
+  </div>
+</section>
+
+

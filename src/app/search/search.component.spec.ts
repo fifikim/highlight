@@ -5,7 +5,8 @@ import { FormsModule } from '@angular/forms';
 import { SearchComponent } from './search.component';
 import { RepoPreviewComponent } from '../repo-preview/repo-preview.component';
 import { RepoService } from '../repo.service';
-import { RepoServiceStub, testRoutes } from '../test-helpers';
+import { MapperService } from '../mapper.service';
+import { RepoServiceStub, MapperServiceStub, testRoutes } from '../test-helpers';
 import { REPOSITORIES } from '../mock-data';
 
 describe('SearchComponent', () => {
@@ -29,6 +30,10 @@ describe('SearchComponent', () => {
         {
           provide: RepoService,
           useValue: new RepoServiceStub()
+        },
+        {
+          provide: MapperService,
+          useValue: new MapperServiceStub()
         },
         { provide: ComponentFixtureAutoDetect, useValue: true }
       ]

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Repository } from '../repository';
 import { RepoService } from '../repo.service';
 import { StatService } from '../stat.service';
+import { MapperService } from '../mapper.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -11,8 +12,13 @@ import { StatService } from '../stat.service';
 export class DashboardComponent implements OnInit {
   stats: string[] = [];
   repos: Repository[] = [];
+  updatedAt?: string;
   
-  constructor(private repoService: RepoService, private statService: StatService) { }
+  constructor(
+    private repoService: RepoService, 
+    private statService: StatService,
+    private mapperService: MapperService
+  ) { }
 
   ngOnInit(): void {
     this.getRepos();
@@ -21,7 +27,11 @@ export class DashboardComponent implements OnInit {
 
   getRepos(): void {
     this.repoService.getRepos()
-      .subscribe(repos => this.repos = repos);
+      .subscribe(repos => {
+        this.repos = repos;
+        let dateNow = new Date();
+        this.updatedAt = `Last updated: ${this.mapperService.date(dateNow)}`;
+      });
   }
 
   getStats(): void {

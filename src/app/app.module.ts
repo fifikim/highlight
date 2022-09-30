@@ -17,7 +17,6 @@ import { HomeComponent } from './home/home.component';
 import { RepoDetailComponent } from './repo-detail/repo-detail.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 
-
 @NgModule({
   declarations: [
     AppComponent,
