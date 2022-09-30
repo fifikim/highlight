@@ -71,3 +71,36 @@ export const GET_REPO = gql`
     }
   }
 `;
+
+export const GET_REPOS = gql`
+  query repos {
+    organization(login: "8thlight") {
+      repositories(orderBy: {direction: DESC, field: UPDATED_AT}, first: 100) {
+        nodes {
+          name
+          description
+        }
+      }
+    }
+  }
+`;
+
+export const GET_MOST_WATCHED = gql`
+  query mostWatched {
+    search(
+        query: "org:8thlight sort:stars-desc",
+        type: REPOSITORY,
+        first: 3,
+        after: null
+    ) {
+        nodes {
+            ... on Repository {
+                name
+                watchers {
+                    totalCount
+                }
+            }
+        }
+    }
+  }
+`;

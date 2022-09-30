@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Repository } from '../repository';
-import { RepoService } from '../repo.service';
+import { SearchService } from '../search.service';
 import { MapperService } from '../mapper.service';
 
 @Component({
@@ -14,12 +14,12 @@ export class SearchComponent{
   results?: Repository[];
   resultString: string = "";
 
-  constructor(private repoService: RepoService, private mapperService: MapperService) {}
+  constructor(private searchService: SearchService, private mapperService: MapperService) {}
 
   search(input :NgForm): void {
     this.term = this.term.trim();
     if (this.term) {
-      this.repoService.searchRepos(this.term)
+      this.searchService.searchRepos(this.term)
         .subscribe(repos => {
           this.results = this.mapperService.mapRepos(repos);
           this.printResults(this.results.length, this.term);

@@ -2,10 +2,12 @@
   <div class="dashboard" fxLayout="column">
     <div fxFlexAlign="center"><h1>Dashboard</h1></div>
   
-    <div fxLayout="row wrap" fxLayoutAlign="space-between center">
-      <app-org-stat class="stats" fxFlex="3 0 40"
-        *ngFor="let stat of stats; let i = index" [stat]="stat" [repo]="repos[i]">
-      </app-org-stat>
+    <h3>Top 3 Most Watched 8th Light Repositories:</h3>
+    <div *ngIf="repos" class="stats" fxLayout="row wrap" fxLayoutAlign="space-between center">
+      <div fxLayoutAlign="center center" fxFlexFill>
+        <app-repo-stat id="stat" class="repo-stat" fxFlex="3 0 0" *ngFor="let repo of repos; let i = index" [repo]="repo" [index]="i">
+        </app-repo-stat>
+      </div>
     </div>
   
     <div class="timestamp" fxLayout="row" fxLayoutAlign="end center" fxFlexOffset="20px">

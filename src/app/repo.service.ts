@@ -1,9 +1,8 @@
 import { Injectable } from '@angular/core';
-import { Observable, of, map } from 'rxjs';
+import { Observable, of, map, tap } from 'rxjs';
 import { Repository } from './repository';
 import { Apollo } from 'apollo-angular';
-import { GET_REPO, GET_VIEWER } from './queries';
-import { REPOSITORIES } from './mock-data';
+import { GET_REPO, GET_REPOS, GET_VIEWER } from './queries';
 
 @Injectable({
   providedIn: 'root'
@@ -19,8 +18,14 @@ export class RepoService {
   }
 
   getRepos(): Observable<Repository[]> {
-    const repositories = of(REPOSITORIES);
-    return repositories;
+    return this.apollo.watchQuery<any>({
+      query: GET_REPOS,
+      errorPolicy: 'all'
+    })
+    .valueChanges
+    .pipe(
+      map(result => result.data.organization.repositories.nodes)
+    );
   }
   
   getRepo(name: string): Observable<Repository> {
@@ -35,19 +40,5 @@ export class RepoService {
     .pipe(
       map(result => result.data.repository)
     );
-  }
-
-  searchRepos(term: string): Observable<Repository[]> {
-    if (!term.trim()) {
-      return of([]);
-    }
-
-    const regexp = new RegExp(term, 'i');
-
-    return this.getRepos().pipe(
-      map(repos => 
-        repos.filter(repo => regexp.test(repo.name))
-      )
-    )
   }
 }

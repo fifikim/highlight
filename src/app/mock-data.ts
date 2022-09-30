@@ -1,3 +1,5 @@
+import { Repository } from "./repository";
+
 export const REPOSITORIES: any[] = [
   {
     name: "zagaku",
@@ -78,15 +80,6 @@ export const REPOSITORIES: any[] = [
     collaborators: 143,
     openPRs: 14
   },
-]
-
-export const ORG_STATS: string[] = [
-  "best project",
-  "most commits",
-  "most collaborators",
-  "largest codebase",
-  "weirdest project",
-  "most fun"
 ]
 
 export const REPO1_SERVER_DATA = {
@@ -356,3 +349,108 @@ export const REPO2_MAPPED_PREVIEW = {
   url: undefined,
   watchers: undefined,
 }
+
+export const MOST_WATCHED_SERVER_DATA = {
+  "data": {
+    "search": {
+      "__typename": "SearchResultItemConnection",
+      "nodes": [
+        {
+          "__typename": "Repository",
+          "name": "hyperion",
+          "watchers": {
+            "__typename": "UserConnection",
+            "totalCount": 99
+          }
+        },
+        {
+          "__typename": "Repository",
+          "name": "ex_state",
+          "watchers": {
+            "__typename": "UserConnection",
+            "totalCount": 8
+          }
+        },
+        {
+          "__typename": "Repository",
+          "name": "boucher",
+          "watchers": {
+            "__typename": "UserConnection",
+            "totalCount": 87
+          }
+        }
+      ]
+    }
+  }
+};
+
+export const MOST_WATCHED_SERVICE_DATA = [
+  {
+    "name": "hyperion",
+    "watchers": {
+      "totalCount": 99
+    }
+  },
+  {
+    "name": "ex_state",
+    "watchers": {
+      "totalCount": 8
+    }
+  },
+  {
+    "name": "boucher",
+    "watchers": {
+      "totalCount": 87
+    }
+  }
+];
+
+export const MOST_WATCHED_MAPPED: Repository[] = [
+  { 
+    "name": "hyperion",
+    "createdAt": undefined,
+    "description": undefined,
+    "issues": undefined,
+    "languages": undefined,
+    "lastCommit": undefined,
+    "lastPR": undefined,
+    "lastUpdated": undefined,
+    "openPRs": undefined,
+    "primaryLanguage": undefined,
+    "url": undefined,
+    "watchers": 99,
+  },
+  {
+    "name": "boucher",
+    "createdAt": undefined,
+    "description": undefined,
+    "issues": undefined,
+    "languages": undefined,
+    "lastCommit": undefined,
+    "lastPR": undefined,
+    "lastUpdated": undefined,
+    "openPRs": undefined,
+    "primaryLanguage": undefined,
+    "url": undefined,
+    "watchers": 87
+  },
+  {
+    "name": "ex_state",
+    "createdAt": undefined,
+    "description": undefined,
+    "issues": undefined,
+    "languages": undefined,
+    "lastCommit": undefined,
+    "lastPR": undefined,
+    "lastUpdated": undefined,
+    "openPRs": undefined,
+    "primaryLanguage": undefined,
+    "url": undefined,
+    "watchers": 8
+  }
+];
+
+export const ALL_REPOS_SERVER_DATA = [
+  REPO1_SERVER_DATA,
+  REPO2_SERVER_DATA
+];

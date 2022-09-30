@@ -28,35 +28,39 @@ export class MapperService {
     }
   }
 
+  mapMostWatched(repos: Repository[]): Repository[] {
+    return repos.map(repo => this.mapRepo(repo)).sort((repo1, repo2) => repo1.watchers > repo2.watchers ? -1 : 1);
+  }
+ 
   date(rawDate: any): string {
     return new Date(rawDate).toLocaleDateString('en-us', { weekday:"long", year:"numeric", month:"short", day:"numeric", hour:"2-digit", minute:"2-digit", second:"numeric"});
   }
 
-  languages(languages: any[]): any {
+  private languages(languages: any[]): any {
     if (languages?.length) {
       return languages.map(language => language['name']).join(', ');
     }
   }
 
-  primaryLanguage(language: any): any {
+  private primaryLanguage(language: any): any {
     if (language) {
       return language['name'];
     }
   }
 
-  pullRequests(pullRequests: any): any {
+  private pullRequests(pullRequests: any): any {
     if (pullRequests) {
       return pullRequests.totalCount;
     }
   }
 
-  watchers(watchers: any): any {
+  private watchers(watchers: any): any {
     if (watchers) {
       return watchers.totalCount;
     }
   }
 
-  commit(rawCommit: any): any {
+  private commit(rawCommit: any): any {
     if (rawCommit) {
       let branch = rawCommit['name'];
       let commit = rawCommit['target']['history']['edges'][0]['node'];
@@ -69,7 +73,7 @@ export class MapperService {
     } 
   }
 
-  lastPullRequest(rawPR: any): any {
+  private lastPullRequest(rawPR: any): any {
     if (rawPR.edges[0]) {
       let pullRequest = rawPR.edges[0]['node'];
       
@@ -83,7 +87,7 @@ export class MapperService {
     }
   }
 
-  issues(rawIssues: any): any {
+  private issues(rawIssues: any): any {
     if (rawIssues) {
       return rawIssues['totalCount'];
     }

@@ -1,9 +1,8 @@
 import { TestBed } from '@angular/core/testing';
 import { RepoService } from './repo.service';
 import { ApolloTestingModule, ApolloTestingController } from 'apollo-angular/testing';
-import { Repository } from './repository';
-import { REPOSITORIES, REPO1_SERVER_DATA } from './mock-data';
-import { mockResponse } from './test-helpers';
+import { REPO1_SERVER_DATA, ALL_REPOS_SERVER_DATA } from './mock-data';
+import { mockRepoResponse, mockReposResponse } from './test-helpers';
 
 describe('RepoService', () => {
   let service: RepoService;
@@ -32,7 +31,7 @@ describe('RepoService', () => {
       done();
     });
 
-    controller.expectOne('repo').flush(mockResponse(REPO1_SERVER_DATA));
+    controller.expectOne('repo').flush(mockRepoResponse(REPO1_SERVER_DATA));
   });
 
   it('#getRepo should return null when no repository name matches the query parameter', (done) => {
@@ -41,42 +40,15 @@ describe('RepoService', () => {
       done();
     });
 
-    controller.expectOne('repo').flush(mockResponse(null));
+    controller.expectOne('repo').flush(mockRepoResponse(null));
   });
 
   it('#getRepos should return a list of repositories', (done) => {
-    const expectedData: Repository[] = REPOSITORIES;
-
     service.getRepos().subscribe(data => {
-      expect(data).toEqual(expectedData);
+      expect(data).toEqual(ALL_REPOS_SERVER_DATA);
       done();
     });
-  });
 
-  it('#searchRepos should return a list of repositories whose name matches the search term', (done) => {
-    const expectedData: Repository[] = [REPOSITORIES[1]];
-
-    service.searchRepos("magistro").subscribe(data => {
-      expect(data).toEqual(expectedData);
-      done();
-    });
-  });
-
-  it('#searchRepos should return a list of repositories whose name partially matches the search term', (done) => {
-    const expectedData: Repository[] = [REPOSITORIES[1]];
-
-    service.searchRepos("magis").subscribe(data => {
-      expect(data).toEqual(expectedData);
-      done();
-    });
-  });
-
-  it('#searchRepos should return an empty list when no repositories match the search term', (done) => {
-  const expectedData: Repository[] = [];
-
-    service.searchRepos("test test").subscribe(data => {
-      expect(data).toEqual(expectedData);
-      done();
-    });
+    controller.expectOne('repos').flush(mockReposResponse(ALL_REPOS_SERVER_DATA));
   });
 });
